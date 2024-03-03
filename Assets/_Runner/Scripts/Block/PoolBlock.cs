@@ -7,17 +7,17 @@ namespace Block
     {
         public const int StartPool = 3;
 
-        private readonly List<IGetableNameBlock> _inactive = new List<IGetableNameBlock>(StartPool);
+        private readonly List<IViewBlock> _inactive = new List<IViewBlock>(StartPool);
 
         public PoolBlock(EnumNameBlock nameBlock)
         {
             GetNameBlock = nameBlock;
         }
 
-        public EnumNameBlock GetNameBlock { get; private set; }
+        public EnumNameBlock GetNameBlock { get; }
         private int GetCount => _inactive.Count;
 
-        public void AddObjToPool(IGetableNameBlock obj)
+        public void AddObjToPool(IViewBlock obj)
         {
             if (!TryDespawn(obj))
             {
@@ -25,7 +25,7 @@ namespace Block
             }
         }
 
-        private bool TryDespawn(IGetableNameBlock obj)
+        private bool TryDespawn(IViewBlock obj)
         {
             for (var i = 0; i < GetCount; i++)
             {
@@ -44,7 +44,7 @@ namespace Block
             return false;
         }
 
-        public bool TryGetObjInPool(out IGetableNameBlock obj)
+        public bool TryGetObjInPool(out IViewBlock obj)
         {
             for (var i = 0; i < GetCount; i++)
             {
@@ -61,7 +61,7 @@ namespace Block
             return false;
         }
 
-        private void Expand(IGetableNameBlock obj)
+        private void Expand(IViewBlock obj)
         {
             if (obj.GetNameBlock == GetNameBlock)
             {
@@ -73,7 +73,7 @@ namespace Block
             }
         }
 
-        private void ReturnError(IGetableNameBlock obj)
+        private void ReturnError(IViewBlock obj)
             => throw new NotImplementedException("ѕытаешьс€ внести " + obj.GetNameBlock + " в пулл " + GetNameBlock);
     }
 }

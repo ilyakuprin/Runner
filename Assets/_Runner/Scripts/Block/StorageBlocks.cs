@@ -12,24 +12,39 @@ namespace Block
 
         private int GetLength => _blocksPrefabs.Length;
 
-        public IGetableNameBlock GetObj(EnumNameBlock nameBlock)
+        public IViewBlock GetObj(EnumNameBlock nameBlock)
         {
             for (var i = 0; i < GetLength; i++)
             {
                 if (_poolBlocks[i].GetNameBlock == nameBlock)
                 {
-                    if (_poolBlocks[i].TryGetObjInPool(out var obj))
+                    if (!_poolBlocks[i].TryGetObjInPool(out var obj))
                     {
-                        return obj;
+                        obj = Create(i);
+                        _poolBlocks[i].AddObjToPool(obj);
                     }
 
-                    var newObj = Create(i);
-                    _poolBlocks[i].AddObjToPool(newObj);
-                    return newObj;
+                    SetActiveObj(obj, true);
+                    return obj;
                 }
             }
 
             throw new NotImplementedException(nameBlock + " отсутствует в массиве префабов");
+        }
+
+        public void ReturnObj(IViewBlock obj)
+        {
+            for (var i = 0; i < GetLength; i++)
+            {
+                if (_poolBlocks[i].GetNameBlock == obj.GetNameBlock)
+                {
+                    _poolBlocks[i].AddObjToPool(obj);
+                    SetActiveObj(obj, false);
+                    return;
+                }
+            }
+
+            throw new NotImplementedException(obj.GetNameBlock + " отсутствует в массиве префабов");
         }
 
         private void Awake()
@@ -52,13 +67,16 @@ namespace Block
             }
         }
 
-        private IGetableNameBlock Create(int index)
+        private IViewBlock Create(int index)
         {
             var block = Instantiate(_blocksPrefabs[index], Vector3.zero, Quaternion.identity, _pool);
             block.gameObject.SetActive(false);
 
             return block;
-        } 
+        }
+
+        public void SetActiveObj(IViewBlock obj, bool value)
+            => obj.GetStart.gameObject.SetActive(value);
 
         private void OnValidate()
         {
