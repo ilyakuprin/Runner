@@ -1,16 +1,29 @@
 using System;
-using System.Linq;
-using UnityEngine;
+using ScriptableObj;
+using Zenject;
 
 namespace Block
 {
-    public class StorageBlocks : MonoBehaviour
+    public class StorageBlocks : IInitializable
     {
-        [SerializeField] private Transform _pool;
-        [SerializeField] private BlockView[] _blocksPrefabs;
+        private readonly StorageBlocksView _blocks;
+        private readonly RoadConfig _roadConfig;
         private PoolBlock[] _poolBlocks;
 
-        private int GetLength => _blocksPrefabs.Length;
+        public StorageBlocks(StorageBlocksView storageBlocksView,
+                             RoadConfig roadConfig)
+        {
+            _blocks = storageBlocksView;
+            _roadConfig = roadConfig;
+        }
+
+        private int GetLength => _poolBlocks.Length;
+
+        public void Initialize()
+        {
+            _poolBlocks = new PoolBlock[_blocks.GetLength];
+            FillPool();
+        }
 
         public IViewBlock GetObj(EnumNameBlock nameBlock)
         {
@@ -20,7 +33,7 @@ namespace Block
                 {
                     if (!_poolBlocks[i].TryGetObjInPool(out var obj))
                     {
-                        obj = Create(i);
+                        obj = _blocks.Create(i);
                         _poolBlocks[i].AddObjToPool(obj);
                     }
 
@@ -38,6 +51,7 @@ namespace Block
             {
                 if (_poolBlocks[i].GetNameBlock == obj.GetNameBlock)
                 {
+                    obj.GetStart.parent = _blocks.Pool;
                     _poolBlocks[i].AddObjToPool(obj);
                     SetActiveObj(obj, false);
                     return;
@@ -47,43 +61,20 @@ namespace Block
             throw new NotImplementedException(obj.GetNameBlock + " отсутствует в массиве префабов");
         }
 
-        private void Awake()
-        {
-            _poolBlocks = new PoolBlock[GetLength];
-
-            FillPool();
-        }
-
         private void FillPool()
         {
             for (var k = 0; k < GetLength; k++)
             {
-                _poolBlocks[k] = new PoolBlock(_blocksPrefabs[k].GetNameBlock);
+                _poolBlocks[k] = new PoolBlock(_blocks.GetBlock(k).GetNameBlock, _roadConfig.NumberVisibleBlocks);
 
-                for (var i = 0; i < PoolBlock.StartPool; i++)
+                for (var i = 0; i < _roadConfig.NumberVisibleBlocks; i++)
                 {
-                    _poolBlocks[k].AddObjToPool(Create(k));
+                    _poolBlocks[k].AddObjToPool(_blocks.Create(k));
                 }
             }
         }
 
-        private IViewBlock Create(int index)
-        {
-            var block = Instantiate(_blocksPrefabs[index], Vector3.zero, Quaternion.identity, _pool);
-            block.gameObject.SetActive(false);
-
-            return block;
-        }
-
         public void SetActiveObj(IViewBlock obj, bool value)
             => obj.GetStart.gameObject.SetActive(value);
-
-        private void OnValidate()
-        {
-            var distinct = _blocksPrefabs.Distinct();
-
-            if (distinct.Count() != GetLength)
-                Debug.LogError("есть повтор€ющиес€ элементы");
-        }
     }
 }

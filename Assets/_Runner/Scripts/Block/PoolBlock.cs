@@ -5,17 +5,16 @@ namespace Block
 {
     public class PoolBlock
     {
-        public const int StartPool = 3;
+        private readonly List<IViewBlock> _pool;
 
-        private readonly List<IViewBlock> _inactive = new List<IViewBlock>(StartPool);
-
-        public PoolBlock(EnumNameBlock nameBlock)
+        public PoolBlock(EnumNameBlock nameBlock, int startPool)
         {
             GetNameBlock = nameBlock;
+            _pool = new List<IViewBlock>(startPool);
         }
 
         public EnumNameBlock GetNameBlock { get; }
-        private int GetCount => _inactive.Count;
+        private int GetCount => _pool.Count;
 
         public void AddObjToPool(IViewBlock obj)
         {
@@ -29,11 +28,11 @@ namespace Block
         {
             for (var i = 0; i < GetCount; i++)
             {
-                if (_inactive[i] == null)
+                if (_pool[i] == null)
                 {
                     if (obj.GetNameBlock == GetNameBlock)
                     {
-                        _inactive[i] = obj;
+                        _pool[i] = obj;
                         return true;
                     }
 
@@ -48,11 +47,12 @@ namespace Block
         {
             for (var i = 0; i < GetCount; i++)
             {
-                var currentObjInPool = _inactive[i];
+                var currentObjInPool = _pool[i];
 
                 if (currentObjInPool != null)
                 {
                     obj = currentObjInPool;
+                    _pool[i] = null;
                     return true;
                 }
             }
@@ -65,7 +65,7 @@ namespace Block
         {
             if (obj.GetNameBlock == GetNameBlock)
             {
-                _inactive.Add(obj);
+                _pool.Add(obj);
             }
             else
             {
