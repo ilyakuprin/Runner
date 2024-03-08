@@ -1,9 +1,9 @@
-using Block;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using ScriptableObj;
 using UnityEngine;
 using Zenject;
+using Block;
 
 namespace Road
 {
@@ -17,6 +17,7 @@ namespace Road
         private CancellationToken _ct;
         private float _pointDeletion;
         private int _currentIndexBlock;
+        private int _counterBlocks;
 
         public MovingRoad(RoadView roadView,
                           CreatingRoad creatingRoad,
@@ -34,6 +35,8 @@ namespace Road
             _pointDeletion = _roadView.Road.position.z;
             _ct = _roadView.GetCancellationTokenOnDestroy();
 
+            _counterBlocks = _roadConfig.NumberVisibleBlocks;
+
             Move().Forget();
         }
 
@@ -45,19 +48,29 @@ namespace Road
 
                 var currentBlock = _creatingRoad.GetBlock(_currentIndexBlock);
 
-                if (currentBlock.GetEnd.position.z < _pointDeletion)
+                if (currentBlock.GetEnd.position.z < _pointDeletion && _counterBlocks < _roadConfig.NumberAllBlocks)
                 {
-                    _storageBlocks.ReturnObj(currentBlock);
-
-                    var lastIndex = (_roadConfig.NumberVisibleBlocks - 1 + _currentIndexBlock) % _roadConfig.NumberVisibleBlocks;
-                    _creatingRoad.CreateBlock(_currentIndexBlock, lastIndex);
-
-                    var nextIndex = (_currentIndexBlock + 1) % _roadConfig.NumberVisibleBlocks;
-                    _currentIndexBlock = nextIndex;
+                    DeleteBlock(currentBlock);
+                    CreateBlock();
+                    SetNextIndex();
                 }
 
                 await UniTask.NextFrame(_ct);
             }
         }
+
+        private void DeleteBlock(IViewBlock block)
+            => _storageBlocks.ReturnObj(block);
+
+        private void CreateBlock()
+        {
+            var lastIndex = (_roadConfig.NumberVisibleBlocks - 1 + _currentIndexBlock) % _roadConfig.NumberVisibleBlocks;
+            _creatingRoad.CreateBlock(_currentIndexBlock, lastIndex);
+
+            _counterBlocks++;
+        }
+
+        private void SetNextIndex()
+            => _currentIndexBlock = (_currentIndexBlock + 1) % _roadConfig.NumberVisibleBlocks;
     }
 }

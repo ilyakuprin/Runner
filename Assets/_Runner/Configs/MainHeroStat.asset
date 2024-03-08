@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f409a72e62c345499995f43ab7e6351, type: 3}
-  m_Name: RoadConfig
+  m_Script: {fileID: 11500000, guid: 4d6d16885dd34e14b9e1e93c104ae295, type: 3}
+  m_Name: MainHeroStat
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 14.67
-  <NumberVisibleBlocks>k__BackingField: 4
-  <NumberAllBlocks>k__BackingField: 10
+  <Health>k__BackingField: 50

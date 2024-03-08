@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2267171152586770011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232505047244027912}
+  - component: {fileID: 7371013992621639904}
+  m_Layer: 8
+  m_Name: Chasm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &232505047244027912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2267171152586770011}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3681948384462502823}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7371013992621639904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2267171152586770011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 0.2, z: 1.9}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3681948384462502822
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,8 +53,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3681948384462502823}
-  - component: {fileID: 5524596197564380323}
-  m_Layer: 0
+  - component: {fileID: 7131784165615949411}
+  m_Layer: 8
   m_Name: 'Chasm_block '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,10 +75,11 @@ Transform:
   - {fileID: 3203197697203997341}
   - {fileID: 6044060442430680534}
   - {fileID: 3681948385235825381}
+  - {fileID: 232505047244027912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5524596197564380323
+--- !u!114 &7131784165615949411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +88,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3681948384462502822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc853b5a7a3aab64e9f0bfedc9e74653, type: 3}
+  m_Script: {fileID: 11500000, guid: 491d941cd16771349802059cd57d5015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nameBlock: 3
@@ -58,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3681948385235825381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +135,7 @@ GameObject:
   - component: {fileID: 3203197697203997341}
   - component: {fileID: 3730545228640899052}
   - component: {fileID: 5695323375480067185}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlaneStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5363179824583858242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 0.5, y: 1, z: 0.4}
   m_Children: []
   m_Father: {fileID: 3681948384462502823}
@@ -171,7 +216,7 @@ GameObject:
   - component: {fileID: 6044060442430680534}
   - component: {fileID: 4037488876739239905}
   - component: {fileID: 4544181565238135719}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlaneEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7856994057588429367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 0.5, y: 1, z: 0.4}
   m_Children: []
   m_Father: {fileID: 3681948384462502823}

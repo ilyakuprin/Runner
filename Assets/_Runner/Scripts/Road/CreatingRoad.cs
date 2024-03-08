@@ -12,27 +12,33 @@ namespace Road
         private readonly RoadView _roadView;
         private readonly StorageBlocks _storageBlocks;
         private readonly RoadConfig _roadConfig;
+        private readonly ChangingParentRoadRotation _changingParentRoadRotation;
         private readonly IViewBlock[] _blocks;
 
-        private Array _blocksNames;
+        private int _lengthAllNames;
+        private EnumNameBlock[] _blocksWithoutRotate;
+        private bool _isCanRotate;
 
         public CreatingRoad(RoadView roadView,
                             StorageBlocks storageBlocks,
-                            RoadConfig roadConfig)
+                            RoadConfig roadConfig,
+                            ChangingParentRoadRotation changingParentRoadRotation)
         {
             _roadView = roadView;
             _storageBlocks = storageBlocks;
             _roadConfig = roadConfig;
+            _changingParentRoadRotation = changingParentRoadRotation;
 
             _blocks = new IViewBlock[_roadConfig.NumberVisibleBlocks];
         }
 
-        private IViewBlock GetRandomBlock => _storageBlocks.GetObj(GetRandomIndexEnum);
-        private EnumNameBlock GetRandomIndexEnum => (EnumNameBlock)Random.Range(0, _blocksNames.Length);
+        private EnumNameBlock GetRandomIndexEnumAllBlock => (EnumNameBlock)Random.Range(0, _lengthAllNames);
+        private EnumNameBlock GetRandomIndexEnumWithoutRotate => _blocksWithoutRotate[Random.Range(0, _blocksWithoutRotate.Length)];
 
         public void Initialize()
         {
-            _blocksNames = Enum.GetValues(typeof(EnumNameBlock));
+            _lengthAllNames = Enum.GetValues(typeof(EnumNameBlock)).Length;
+            FillArrayWithoutRotateBlocks();
 
             CreateStartingFirstBlock();
             CreateStartingRemainingBlock();
@@ -50,15 +56,34 @@ namespace Road
 
         public void CreateBlock(int currentIndex, int lastIndex)
         {
-            var randomBlock = GetRandomBlock;
-            SetStartingLocation(randomBlock, lastIndex);
+            var randomBlock = GetRandomBlock();
+            var lastBlock = _blocks[lastIndex];
+
+            SetPosition(randomBlock, lastBlock.GetEnd.position);
+            SetParent(randomBlock);
+            SetRotation(randomBlock, lastBlock);
+
             _blocks[currentIndex] = randomBlock;
+        }
+
+        private IViewBlock GetRandomBlock()
+        {
+            if (_isCanRotate)
+            {
+                var block = GetRandomIndexEnumAllBlock;
+                if(IsRotateBlock(block))
+                    _isCanRotate = false;
+
+                return _storageBlocks.GetObj(block);
+            }
+
+            return _storageBlocks.GetObj(GetRandomIndexEnumWithoutRotate);
         }
 
         private void CreateStartingFirstBlock()
         {
             var emptyBlock = _storageBlocks.GetObj(EnumNameBlock.Empty);
-            SetStartPosition(emptyBlock, _roadView.Road.position);
+            SetPosition(emptyBlock, _roadView.Road.position);
             SetParent(emptyBlock);
             _blocks[0] = emptyBlock;
         }
@@ -69,18 +94,53 @@ namespace Road
             {
                 CreateBlock(i, i - 1);
             }
-        }
 
-        private void SetStartingLocation(IViewBlock currentBlock, int lastBlockIndex)
-        {
-            SetStartPosition(currentBlock, _blocks[lastBlockIndex].GetEnd.position);
-            SetParent(currentBlock);
+            _isCanRotate = true;
         }
 
         private void SetParent(IViewBlock block)
             => block.GetStart.parent = _roadView.Road;
 
-        private void SetStartPosition(IViewBlock block, Vector3 position)
+        private void SetPosition(IViewBlock block, Vector3 position)
             => block.GetStart.position = position;
+
+        private void SetRotation(IViewBlock block, IViewBlock lastBlock)
+        {
+            block.GetStart.rotation = lastBlock.GetEnd.rotation;
+
+            if (IsRotateBlock(lastBlock.GetNameBlock))
+            {
+                _changingParentRoadRotation.Change(lastBlock);
+            }
+        }
+
+        private void FillArrayWithoutRotateBlocks()
+        {
+            var length = 0;
+
+            for (var i = 0; i < _lengthAllNames; i++)
+            {
+                if (!IsRotateBlock((EnumNameBlock)i))
+                {
+                    length++;
+                }
+            }
+
+            _blocksWithoutRotate = new EnumNameBlock[length];
+
+            for (var i = 0; i < _blocksWithoutRotate.Length; i++)
+            {
+                var nameBlock = (EnumNameBlock)i;
+
+                if (!IsRotateBlock(nameBlock))
+                {
+                    _blocksWithoutRotate[i] = nameBlock;
+                }
+            }
+        }
+
+        private bool IsRotateBlock(EnumNameBlock nameBlock)
+            => nameBlock == EnumNameBlock.Left ||
+               nameBlock == EnumNameBlock.Right;
     }
 }

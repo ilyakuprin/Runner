@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705800896665304065}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6425581271604773657}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6425581271604773657}
-  - component: {fileID: 5865457523274260064}
+  - component: {fileID: 7612139772550370701}
   m_Layer: 0
   m_Name: Saw_block
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5865457523274260064
+--- !u!114 &7612139772550370701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6425581271604773656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc853b5a7a3aab64e9f0bfedc9e74653, type: 3}
+  m_Script: {fileID: 11500000, guid: 491d941cd16771349802059cd57d5015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nameBlock: 0
@@ -171,7 +171,8 @@ GameObject:
   - component: {fileID: 7716613163356145534}
   - component: {fileID: 7716613163356145532}
   - component: {fileID: 7716613163356145535}
-  m_Layer: 0
+  - component: {fileID: 2998096955989661151}
+  m_Layer: 8
   m_Name: Saw_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,8 +187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7716613163356145521}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.349, z: 5}
-  m_LocalScale: {x: 3, y: 0.030000007, z: 3}
+  m_LocalPosition: {x: 0, y: -0.85, z: 5}
+  m_LocalScale: {x: 3, y: 0.03, z: 3}
   m_Children: []
   m_Father: {fileID: 6425581271604773657}
   m_RootOrder: 1
@@ -241,3 +242,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2998096955989661151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7716613163356145521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2.0000005, z: 1.0000005}
+  m_Center: {x: 0.000000059604645, y: -8.131516e-20, z: -0.00000008940699}

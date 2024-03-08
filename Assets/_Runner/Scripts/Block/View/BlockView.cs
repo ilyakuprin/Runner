@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace Block
 {
-    public abstract class BlockView : MonoBehaviour, IViewBlock
+    public class BlockView : MonoBehaviour, IViewBlock
     {
         [SerializeField] private EnumNameBlock _nameBlock;
+        [SerializeField] private Transform _start;
+        [SerializeField] private Transform _end;
         
         public EnumNameBlock GetNameBlock => _nameBlock;
-
-        public abstract Transform GetStart { get; }
-        public abstract Transform GetEnd { get; }
+        public Transform GetStart => _start;
+        public Transform GetEnd => _end;
     }
 }

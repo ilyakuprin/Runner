@@ -6,7 +6,8 @@ namespace Block
         Fence,
         Empty,
         Chasm,
-        ChasmLong
-        //TrajectoryChange
+        ChasmLong,
+        Right,
+        Left
     }
 }

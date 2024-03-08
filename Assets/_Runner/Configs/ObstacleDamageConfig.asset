@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f409a72e62c345499995f43ab7e6351, type: 3}
-  m_Name: RoadConfig
+  m_Script: {fileID: 11500000, guid: 0d9187c69d8d87c4f8352b609a136f34, type: 3}
+  m_Name: ObstacleDamageConfig
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 14.67
-  <NumberVisibleBlocks>k__BackingField: 4
-  <NumberAllBlocks>k__BackingField: 10
+  _obstacles:
+  - NameBlock: 0
+    Damage: 30
+  - NameBlock: 1
+    Damage: 10
+  - NameBlock: 3
+    Damage: 20
+  - NameBlock: 4
+    Damage: 25
