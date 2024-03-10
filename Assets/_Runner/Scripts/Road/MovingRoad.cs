@@ -13,6 +13,7 @@ namespace Road
         private readonly CreatingRoad _creatingRoad;
         private readonly StorageBlocks _storageBlocks;
         private readonly RoadConfig _roadConfig;
+        private readonly float _speed;
 
         private CancellationToken _ct;
         private float _pointDeletion;
@@ -22,12 +23,14 @@ namespace Road
         public MovingRoad(RoadView roadView,
                           CreatingRoad creatingRoad,
                           StorageBlocks storageBlocks,
-                          RoadConfig roadConfig)
+                          RoadConfig roadConfig,
+                          MainHeroStatConfig heroStatConfig)
         {
             _roadView = roadView;
             _creatingRoad = creatingRoad;
             _storageBlocks = storageBlocks;
             _roadConfig = roadConfig;
+            _speed = heroStatConfig.Speed;
         }
 
         public void Initialize()
@@ -44,7 +47,7 @@ namespace Road
         {
             while (!_ct.IsCancellationRequested)
             {
-                _roadView.Road.position += Time.deltaTime * (Vector3.back * _roadConfig.Speed);
+                _roadView.Road.position += Time.deltaTime * (Vector3.back * _speed);
 
                 var currentBlock = _creatingRoad.GetBlock(_currentIndexBlock);
 

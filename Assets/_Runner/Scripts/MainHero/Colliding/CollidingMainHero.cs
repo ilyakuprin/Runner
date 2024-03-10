@@ -12,13 +12,13 @@ namespace Collision
     {
         public event Action<int> Triggered;
 
-        private readonly Rigidbody _hero;
+        private readonly CharacterController _hero;
         private AsyncTriggerEnterTrigger _trigger;
         private CancellationToken _ct;
 
         public CollidingMainHero(MainHeroView mainHeroView)
         {
-            _hero = mainHeroView.Hero;
+            _hero = mainHeroView.HeroController;
         }
 
         public void Initialize()

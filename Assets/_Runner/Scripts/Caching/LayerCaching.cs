@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Layer
+namespace Caching
 {
     public class LayerCaching : IInitializable
     {

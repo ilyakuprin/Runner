@@ -1,21 +1,21 @@
 using Collision;
 using Cysharp.Threading.Tasks;
-using Layer;
-using MainHero;
+using Caching;
+using Road;
 using System;
 using System.Threading;
 using UnityEngine;
 using Zenject;
 
-namespace Road
+namespace MainHero
 {
-    public class RoadRotation : IInitializable, IDisposable
+    public class RoadRotation : IInitializable, IDisposable, ICollidable
     {
         private const float TimeRotate = 0.7f;
         private const float Speed = 1 / TimeRotate;
 
         private readonly Transform _road;
-        private readonly Rigidbody _hero;
+        private readonly CharacterController _hero;
         private readonly LayerCaching _layerCaching;
         private readonly ChangingParentRoadRotation _changingParentRoadRotation;
         private readonly CollidingMainHero _collidingMainHero;
@@ -29,7 +29,7 @@ namespace Road
                             CollidingMainHero collidingMainHero)
         {
             _road = roadView.Road;
-            _hero = mainHeroView.Hero;
+            _hero = mainHeroView.HeroController;
             _layerCaching = layerCaching;
             _changingParentRoadRotation = changingParentRoadRotation;
             _collidingMainHero = collidingMainHero;
@@ -39,15 +39,15 @@ namespace Road
         {
             _ct = _hero.GetCancellationTokenOnDestroy();
 
-            _collidingMainHero.Triggered += DetectRotate;
+            _collidingMainHero.Triggered += Collide;
         }
 
         public void Dispose()
         {
-            _collidingMainHero.Triggered -= DetectRotate;
+            _collidingMainHero.Triggered -= Collide;
         }
 
-        private void DetectRotate(int layer)
+        public void Collide(int layer)
         {
             if (layer == _layerCaching.TrajectoryChangeBlock)
             {

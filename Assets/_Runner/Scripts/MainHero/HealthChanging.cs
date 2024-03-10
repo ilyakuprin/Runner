@@ -5,21 +5,19 @@ namespace MainHero
 {
     public class HealthChanging
     {
-        public event Action Died;
-        public event Action<int> TakenDamage;
-        public event Action<int> TakenHeal;
+        public event Action<int> HealthChanged;
 
         private const int MinHealth = 0;
-
-        private readonly int _maxHealth;
 
         private int _currentHealth;
 
         public HealthChanging(MainHeroStatConfig mainHeroStatConfig)
         {
-            _maxHealth = mainHeroStatConfig.Health;
-            _currentHealth = _maxHealth;
+            MaxHealth = mainHeroStatConfig.Health;
+            _currentHealth = MaxHealth;
         }
+
+        public int MaxHealth { get; }
 
         public void TakeDamage(int value)
         {
@@ -27,15 +25,12 @@ namespace MainHero
             {
                 _currentHealth -= value;
 
-                if (_currentHealth <= MinHealth)
+                if (_currentHealth < MinHealth)
                 {
                     _currentHealth = MinHealth;
-                    Died?.Invoke();
                 }
-                else
-                {
-                    TakenDamage?.Invoke(value);
-                }
+
+                HealthChanged?.Invoke(_currentHealth);
             }
             else
             {
@@ -45,18 +40,16 @@ namespace MainHero
 
         public void TakeHeal(int value)
         {
-            if (value > 0 && _currentHealth < _maxHealth)
+            if (value > 0 && _currentHealth < MaxHealth)
             {
                 _currentHealth += value;
 
-                if (_currentHealth > _maxHealth)
+                if (_currentHealth > MaxHealth)
                 {
-                    _currentHealth = _maxHealth;
+                    _currentHealth = MaxHealth;
                 }
-                else
-                {
-                    TakenHeal?.Invoke(value);
-                }
+
+                HealthChanged?.Invoke(_currentHealth);
             }
             else
             {
