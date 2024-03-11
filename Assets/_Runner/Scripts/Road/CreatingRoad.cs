@@ -8,32 +8,32 @@ namespace Road
 {
     public class CreatingRoad : IInitializable, IDisposable
     {
-        public event Action<IViewBlock> Created;
+        public event Action<BlockView> Created;
 
         private readonly RoadView _roadView;
-        private readonly StorageBlocks _storageBlocks;
+        private readonly StorageBlocks _storage;
         private readonly RoadConfig _roadConfig;
         private readonly GettingRandomBlock _gettingRandomBlock;
         private readonly MovingRoad _movingRoad;
-        private readonly IViewBlock[] _blocks;
+        private readonly BlockView[] _blocks;
 
         private bool _isCanRotate;
         private int _currentIndexBlock;
         private float _pointDeletion;
 
         public CreatingRoad(RoadView roadView,
-                            StorageBlocks storageBlocks,
+                            StorageBlocks storage,
                             RoadConfig roadConfig,
                             GettingRandomBlock gettingRandomBlock,
                             MovingRoad movingRoad)
         {
             _roadView = roadView;
-            _storageBlocks = storageBlocks;
+            _storage = storage;
             _roadConfig = roadConfig;
             _gettingRandomBlock = gettingRandomBlock;
             _movingRoad = movingRoad;
 
-            _blocks = new IViewBlock[_roadConfig.NumberVisibleBlocks];
+            _blocks = new BlockView[_roadConfig.NumberVisibleBlocks];
         }
 
         public void Initialize()
@@ -63,7 +63,7 @@ namespace Road
             if (currentBlock.GetEnd.position.z >= _pointDeletion)
                 return;
 
-            _storageBlocks.ReturnObj(currentBlock);
+            _storage.ReturnObj(currentBlock);
 
             var lastIndex = (_roadConfig.NumberVisibleBlocks - 1 + _currentIndexBlock) % _roadConfig.NumberVisibleBlocks;
             CreateBlock(_currentIndexBlock, lastIndex);
@@ -89,7 +89,7 @@ namespace Road
 
         private void CreateStartingFirstBlock()
         {
-            var emptyBlock = _storageBlocks.GetObj(EnumNameBlock.Empty);
+            var emptyBlock = _storage.GetObj((int)EnumNameBlock.Empty);
             SetPosition(emptyBlock, _roadView.Road.position);
             SetParent(emptyBlock);
             _blocks[0] = emptyBlock;
@@ -101,13 +101,13 @@ namespace Road
                 CreateBlock(i, i - 1);
         }
 
-        private void SetParent(IViewBlock block)
-            => block.GetStart.parent = _roadView.Road;
+        private void SetParent(PoolObjects.IPoolable block)
+            => block.GetTransform.parent = _roadView.Road;
 
-        private static void SetRotation(IViewBlock block, IViewBlock lastBlock)
-            => block.GetStart.rotation = lastBlock.GetEnd.rotation;
+        private static void SetRotation(PoolObjects.IPoolable block, BlockView lastBlock)
+            => block.GetTransform.rotation = lastBlock.GetEnd.rotation;
 
-        private static void SetPosition(IViewBlock block, Vector3 position)
-            => block.GetStart.position = position;
+        private static void SetPosition(PoolObjects.IPoolable block, Vector3 position)
+            => block.GetTransform.position = position;
     }
 }

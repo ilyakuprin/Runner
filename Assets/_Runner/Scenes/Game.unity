@@ -682,6 +682,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 815852592}
   - {fileID: 690158514}
   - {fileID: 1635760027}
   m_Father: {fileID: 0}
@@ -715,7 +716,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 511002312}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -810,6 +811,36 @@ Transform:
   m_Father: {fileID: 1720032575}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 68.375, y: -75.041, z: -60.292}
+--- !u!1 &815852591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 815852592}
+  m_Layer: 0
+  m_Name: PoolBoosts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &815852592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815852591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 511002312}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,8 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e177b79df216947968f2dbc83f8d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Pool>k__BackingField: {fileID: 690158514}
-  _blocksPrefabs:
+  _prefabs:
   - {fileID: 7131784165615949411, guid: 2940f1b8090e5b44e9cbc67e02a911aa, type: 3}
   - {fileID: 7498599462974438298, guid: 0e7655e4b15c8364d9bf3730b3e8a4c2, type: 3}
   - {fileID: 7406832455075502329, guid: 795e23907946fcc4cabd47cd2c27ac5c, type: 3}
@@ -1046,6 +1076,7 @@ MonoBehaviour:
   - {fileID: 628278660338118003, guid: 91d88adb8c3f3d54c9bcbdd6fba37315, type: 3}
   - {fileID: 4162718228861009514, guid: cefc597274bdb0547a40b71c6efec62e, type: 3}
   - {fileID: 7612139772550370701, guid: 87beb09eb489c9e49b41b9f0c598260a, type: 3}
+  <Pool>k__BackingField: {fileID: 690158514}
 --- !u!114 &1531422014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 511002312}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1688779291
 GameObject:

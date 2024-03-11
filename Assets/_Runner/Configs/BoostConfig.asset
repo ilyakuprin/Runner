@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c393600f0054a4abc4a57e06f0050b, type: 3}
   m_Name: BoostConfig
   m_EditorClassIdentifier: 
-  <BoostProbability>k__BackingField: 0.3
+  <StartCountInPool>k__BackingField: 4
+  <BoostProbability>k__BackingField: 40
   _boostDropChance:
-  - BoostView: {fileID: -2307341035343872566, guid: 89cd01b9976f03e4b82f6c976ede1676, type: 3}
-    Chance: 0.5
-  - BoostView: {fileID: -7769047771458129240, guid: f02fbec542cc5d9429e55c251663113a, type: 3}
-    Chance: 0.3
-  - BoostView: {fileID: -1025896683510586785, guid: 6ae2d9484d9d17d40bd0a0cab7b8ab6f, type: 3}
-    Chance: 0.2
+  - BoostName: 0
+    Chance: 40
+  - BoostName: 0
+    Chance: 40
+  - BoostName: 0
+    Chance: 20

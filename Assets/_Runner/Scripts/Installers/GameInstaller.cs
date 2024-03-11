@@ -8,6 +8,7 @@ using ScriptableObj;
 using UnityEngine;
 using Zenject;
 using UI;
+using Boosts;
 
 namespace Installer
 {
@@ -48,6 +49,7 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<JumpingMainHero>().AsSingle();
             Container.BindInterfacesAndSelfTo<JumpingMainHeroAnim>().AsSingle();
             Container.BindInterfacesAndSelfTo<HealthDisplay>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CreatingBoost>().AsSingle();
         }
     }
 }

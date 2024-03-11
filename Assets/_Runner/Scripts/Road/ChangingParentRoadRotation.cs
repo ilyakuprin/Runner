@@ -14,9 +14,9 @@ namespace Road
 
         public Quaternion Rotation { get; private set; }
 
-        public void Change(IViewBlock rotateBlock)
+        public void Change(BlockView rotateBlock)
         {
-            var center = rotateBlock.GetStart.position;
+            var center = rotateBlock.GetTransform.position;
             center.z = rotateBlock.GetEnd.position.z;
             ChangePositionRoad(center);
 

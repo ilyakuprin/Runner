@@ -252,6 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491d941cd16771349802059cd57d5015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _object: {fileID: 4933396602980367098}
   _nameBlock: 5
-  _start: {fileID: 4933396602980367098}
   _end: {fileID: 4933396602409415608}

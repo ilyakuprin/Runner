@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f409a72e62c345499995f43ab7e6351, type: 3}
   m_Name: RoadConfig
   m_EditorClassIdentifier: 
+  <StartCountInPool>k__BackingField: 4
   <NumberVisibleBlocks>k__BackingField: 4
   <NumberAllBlocks>k__BackingField: 20

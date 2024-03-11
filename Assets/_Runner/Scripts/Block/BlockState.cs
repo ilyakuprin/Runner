@@ -38,7 +38,7 @@ namespace Block
             _creatingRoad.Created -= State;
         }
 
-        private void State(IViewBlock block)
+        private void State(BlockView block)
         {
             ActivateCanRotate();
 

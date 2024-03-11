@@ -7,13 +7,13 @@ namespace ScriptableObj
     [Serializable]
     public struct BoostDropChance
     {
-        public BoostView BoostView;
+        public EnumNameBoost BoostName;
         [Tooltip("0 - нулевая вероятность, 100 - 100% вероятсноть"),
          Range(0, 100)] public int Chance;
     }
 
     [CreateAssetMenu(fileName = "BoostConfig", menuName = "Configs/BoostConfig")]
-    public class BoostConfig : ScriptableObject
+    public class BoostConfig : PoolConfig
     {
         [field: Tooltip("0 - нулевая вероятность, 100 - 100% вероятсноть"),
                 SerializeField, Range(0, 100)] public int BoostProbability { get; private set; }

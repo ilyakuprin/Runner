@@ -6,20 +6,20 @@ namespace Block
 {
     public class GettingRandomBlock : IInitializable
     {
-        private readonly StorageBlocks _storageBlocks;
+        private readonly StorageBlocks _storage;
 
         private int _lengthAllNames;
         private EnumNameBlock[] _blocksWithoutRotate;
 
-        public GettingRandomBlock(StorageBlocks storageBlocks)
+        public GettingRandomBlock(StorageBlocks storage)
         {
-            _storageBlocks = storageBlocks;
+            _storage = storage;
         }
 
-        private EnumNameBlock GetRandomIndexEnumAllBlock
-            => (EnumNameBlock)Random.Range(0, _lengthAllNames);
-        private EnumNameBlock GetRandomIndexEnumWithoutRotate
-            => _blocksWithoutRotate[Random.Range(0, _blocksWithoutRotate.Length)];
+        private int GetRandomIndexEnumAllBlock
+            => Random.Range(0, _lengthAllNames);
+        private int GetRandomIndexEnumWithoutRotate
+            => (int)_blocksWithoutRotate[Random.Range(0, _blocksWithoutRotate.Length)];
 
         public void Initialize()
         {
@@ -27,11 +27,11 @@ namespace Block
             FillArrayWithoutRotateBlocks();
         }
 
-        public IViewBlock GetFromAll()
-            => _storageBlocks.GetObj(GetRandomIndexEnumAllBlock);
+        public BlockView GetFromAll()
+            => _storage.GetObj(GetRandomIndexEnumAllBlock);
 
-        public IViewBlock GetWithoutRotate()
-            => _storageBlocks.GetObj(GetRandomIndexEnumWithoutRotate);
+        public BlockView GetWithoutRotate()
+            => _storage.GetObj(GetRandomIndexEnumWithoutRotate);
 
         private void FillArrayWithoutRotateBlocks()
         {

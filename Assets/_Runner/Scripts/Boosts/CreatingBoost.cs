@@ -4,7 +4,7 @@ namespace Boosts
 {
     public class CreatingBoost
     {
-        public void Create(IViewBlock block)
+        public void Create(BlockView block)
         {
 
         }
