@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -13,14 +12,7 @@ namespace Block
         public int GetLength => _blocksPrefabs.Length;
 
         public BlockView GetBlock(int index)
-        {
-            if (index >= 0 && index < GetLength)
-            {
-                return _blocksPrefabs[index];
-            }
-
-            throw new IndexOutOfRangeException("пытаешься взять " + index + " элемент, но в массиве " + GetLength + " префабов");
-        }
+            => _blocksPrefabs[index];
 
         public IViewBlock Create(int index)
         {

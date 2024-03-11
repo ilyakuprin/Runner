@@ -20,7 +20,7 @@ namespace Road
             center.z = rotateBlock.GetEnd.position.z;
             ChangePositionRoad(center);
 
-            Rotation = Quaternion.Euler(rotateBlock.GetEnd.rotation.eulerAngles * -1);
+            Rotation = Quaternion.Euler(_road.rotation.eulerAngles + rotateBlock.GetEnd.rotation.eulerAngles * -1);
         }
 
         private void ChangePositionRoad(Vector3 newPosition)

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Speed
+  - Invulnerability
+  - Heal
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - TrajectoryChangeBlock
   - Player
   - Obstacle
-  - 
+  - Boost
   - 
   - 
   - 

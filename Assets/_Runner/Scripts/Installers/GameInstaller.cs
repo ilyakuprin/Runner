@@ -36,7 +36,9 @@ namespace Installer
 
             Container.BindInterfacesAndSelfTo<StorageBlocks>().AsSingle();
             Container.BindInterfacesAndSelfTo<ChangingParentRoadRotation>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GettingRandomBlock>().AsSingle();
             Container.BindInterfacesAndSelfTo<CreatingRoad>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BlockState>().AsSingle();
             Container.BindInterfacesAndSelfTo<MovingRoad>().AsSingle();
             Container.BindInterfacesAndSelfTo<RoadRotation>().AsSingle();
             Container.BindInterfacesAndSelfTo<CollidingMainHero>().AsSingle();
