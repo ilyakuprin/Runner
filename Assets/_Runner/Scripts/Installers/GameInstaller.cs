@@ -26,6 +26,8 @@ namespace Installer
         [SerializeField] private HealConfig _healConfig;
         [SerializeField] private SpeedConfig _speedConfig;
         [SerializeField] private InvulnerabilityConfig _invulnerabilityConfig;
+        [SerializeField] private DefeatCanvasView _defeatCanvasView;
+        [SerializeField] private MovementAfterAdConfig _movementAfterAdConfig;
 
         public override void InstallBindings()
         {
@@ -41,6 +43,8 @@ namespace Installer
             Container.Bind<HealConfig>().FromInstance(_healConfig).AsSingle();
             Container.Bind<SpeedConfig>().FromInstance(_speedConfig).AsSingle();
             Container.Bind<InvulnerabilityConfig>().FromInstance(_invulnerabilityConfig).AsSingle();
+            Container.Bind<DefeatCanvasView>().FromInstance(_defeatCanvasView).AsSingle();
+            Container.Bind<MovementAfterAdConfig>().FromInstance(_movementAfterAdConfig).AsSingle();
 
             Container.BindInterfacesAndSelfTo<LayerCaching>().AsSingle();
             Container.BindInterfacesAndSelfTo<AnimCaching>().AsSingle();
@@ -68,6 +72,14 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<GettingSpeed>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingDamageCalculation>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingInvulnerability>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SettingActivePauseDefeat>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DeathMainHeroAnim>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SettingActiveDefeatCanvas>().AsSingle();
+            Container.BindInterfacesAndSelfTo<Restarting>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ContinueRunningAnim>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ShiftingRoadBack>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MovementAfterAd>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ContinuationGameForAd>().AsSingle();
         }
     }
 }

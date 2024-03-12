@@ -5,6 +5,7 @@ namespace MainHero
 {
     public class HealthChanging
     {
+        public event Action Dead;
         public event Action<int> HealthChanged;
 
         private const int MinHealth = 0;
@@ -25,9 +26,10 @@ namespace MainHero
 
             _currentHealth -= value;
 
-            if (_currentHealth < MinHealth)
+            if (_currentHealth <= MinHealth)
             {
                 _currentHealth = MinHealth;
+                Dead?.Invoke();
             }
 
             HealthChanged?.Invoke(_currentHealth);

@@ -38,7 +38,6 @@ namespace Collision
         {
             if (gameObj.layer != _layerCaching.Boost) return;
 
-            Debug.Log(gameObj.tag);
             Collided?.Invoke(gameObj.tag);
 
             _creatingBoost.ReturnObj();

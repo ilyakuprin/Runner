@@ -5,7 +5,7 @@ using Zenject;
 
 namespace MainHero
 {
-    public class JumpingMainHeroAnim : IInitializable, IDisposable
+    public class JumpingMainHeroAnim : IInitializable, IDisposable, IPlayableAnim
     {
         private readonly Animator _animator;
         private readonly JumpingMainHero _jumpingMainHero;
@@ -30,7 +30,7 @@ namespace MainHero
             _jumpingMainHero.Jumped -= Play;
         }
 
-        private void Play()
+        public void Play()
         {
             _animator.SetTrigger(_animCaching.Jump);
         }

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StartCountInPool>k__BackingField: 1
   OneHundred: 100
-  <BoostProbability>k__BackingField: 60
+  <BoostProbability>k__BackingField: 100
   _boostDropChance:
   - BoostName: 0
-    Chance: 40
+    Chance: 0
   - BoostName: 1
-    Chance: 40
+    Chance: 50
   - BoostName: 2
-    Chance: 20
+    Chance: 50
   <PositionHeight>k__BackingField: 1

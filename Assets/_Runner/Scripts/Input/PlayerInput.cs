@@ -8,9 +8,12 @@ namespace Inputting
     {
         public event Action<InputData> Inputted;
         private InputData _inputData;
+        private bool _isPause;
 
         public void Tick()
         {
+            if (_isPause) return;
+
             _inputData = new InputData()
             {
                 Jump = Input.GetMouseButtonDown(0)
@@ -18,5 +21,8 @@ namespace Inputting
 
             Inputted?.Invoke(_inputData);
         }
+
+        public void SetPause(bool value)
+            => _isPause = value;
     }
 }

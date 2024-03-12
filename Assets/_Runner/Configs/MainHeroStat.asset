@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainHeroStat
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 6
-  <Health>k__BackingField: 10
+  <Health>k__BackingField: 3
   <JumpHeight>k__BackingField: 0.6
   <GravityScale>k__BackingField: 1.85
   <GradientHealth>k__BackingField:
