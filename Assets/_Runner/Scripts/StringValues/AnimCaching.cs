@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Caching
+namespace StringValues
 {
     public class AnimCaching : IInitializable
     {

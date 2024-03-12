@@ -21,43 +21,31 @@ namespace MainHero
 
         public void TakeDamage(int value)
         {
-            if (value > 0)
-            {
-                _currentHealth -= value;
+            if (value <= 0) return;
 
-                if (_currentHealth < MinHealth)
-                {
-                    _currentHealth = MinHealth;
-                }
+            _currentHealth -= value;
 
-                HealthChanged?.Invoke(_currentHealth);
-            }
-            else
+            if (_currentHealth < MinHealth)
             {
-                ReturnError();
+                _currentHealth = MinHealth;
             }
+
+            HealthChanged?.Invoke(_currentHealth);
         }
 
         public void TakeHeal(int value)
         {
-            if (value > 0 && _currentHealth < MaxHealth)
-            {
-                _currentHealth += value;
+            if (value <= 0) return;
+            if (_currentHealth >= MaxHealth) return;
 
-                if (_currentHealth > MaxHealth)
-                {
-                    _currentHealth = MaxHealth;
-                }
+            _currentHealth += value;
 
-                HealthChanged?.Invoke(_currentHealth);
-            }
-            else
+            if (_currentHealth > MaxHealth)
             {
-                ReturnError();
+                _currentHealth = MaxHealth;
             }
+
+            HealthChanged?.Invoke(_currentHealth);
         }
-
-        private void ReturnError()
-            => throw new NotImplementedException("не положительное значение");
     }
 }

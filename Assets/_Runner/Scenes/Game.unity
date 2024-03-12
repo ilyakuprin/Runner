@@ -655,6 +655,11 @@ MonoBehaviour:
   _mainHeroStatConfig: {fileID: 11400000, guid: ec4237c43c5b01e4bb9279231205e77b, type: 2}
   _obstacleDamageConfig: {fileID: 11400000, guid: a95cce804ca2bac4c918778458ea3f5b, type: 2}
   _healthBarView: {fileID: 1531422016}
+  _boostConfig: {fileID: 11400000, guid: 21f4c50008bf5af4298185c321eb42d8, type: 2}
+  _storageBoostView: {fileID: 1531422017}
+  _healConfig: {fileID: 11400000, guid: 60ff2f6a6fc6849439d897883d7bf87b, type: 2}
+  _speedConfig: {fileID: 11400000, guid: 4bf405f4395362b4fae5f1a5696f6692, type: 2}
+  _invulnerabilityConfig: {fileID: 11400000, guid: 480bc217376d57a44b137af8050adfa6, type: 2}
 --- !u!1 &511002311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,6 +1040,7 @@ GameObject:
   - component: {fileID: 1531422013}
   - component: {fileID: 1531422015}
   - component: {fileID: 1531422016}
+  - component: {fileID: 1531422017}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1117,6 +1123,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Bar>k__BackingField: {fileID: 303902339}
+--- !u!114 &1531422017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531422011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c63a27a25b9c44dacf344cb9a91d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabs:
+  - {fileID: -2307341035343872566, guid: 89cd01b9976f03e4b82f6c976ede1676, type: 3}
+  - {fileID: 7836989835258315215, guid: f02fbec542cc5d9429e55c251663113a, type: 3}
+  - {fileID: 1373649943112236212, guid: 6ae2d9484d9d17d40bd0a0cab7b8ab6f, type: 3}
+  <Pool>k__BackingField: {fileID: 815852592}
 --- !u!1 &1593195722
 GameObject:
   m_ObjectHideFlags: 0

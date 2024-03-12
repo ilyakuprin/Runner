@@ -1,6 +1,6 @@
 using Collision;
 using Cysharp.Threading.Tasks;
-using Caching;
+using StringValues;
 using Road;
 using System;
 using System.Threading;
@@ -47,9 +47,9 @@ namespace MainHero
             _collidingMainHero.Triggered -= Collide;
         }
 
-        public void Collide(int layer)
+        public void Collide(GameObject gameObj)
         {
-            if (layer == _layerCaching.TrajectoryChangeBlock)
+            if (gameObj.layer == _layerCaching.TrajectoryChangeBlock)
             {
                 Rotate().Forget();
             }

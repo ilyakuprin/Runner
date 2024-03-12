@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228299234252295546}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: 0.70710677, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3092411192062724637}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-2307341035343872566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7126982dbb1ba1c45bfd82b745890009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _object: {fileID: 4883440073111918528}
   _nameBoost: 0
 --- !u!1 &7713076164663345335
 GameObject:
@@ -56,7 +57,7 @@ GameObject:
   - component: {fileID: 3092411192062724637}
   - component: {fileID: 6683788412647687588}
   - component: {fileID: 250998076843697956}
-  - component: {fileID: 8063872967084047350}
+  - component: {fileID: 7970920182652154284}
   m_Layer: 9
   m_Name: mesh
   m_TagString: Heal
@@ -127,7 +128,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8063872967084047350
+--- !u!65 &7970920182652154284
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

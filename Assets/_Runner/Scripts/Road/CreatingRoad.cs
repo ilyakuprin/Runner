@@ -12,7 +12,6 @@ namespace Road
 
         private readonly RoadView _roadView;
         private readonly StorageBlocks _storage;
-        private readonly RoadConfig _roadConfig;
         private readonly GettingRandomBlock _gettingRandomBlock;
         private readonly MovingRoad _movingRoad;
         private readonly BlockView[] _blocks;
@@ -29,12 +28,14 @@ namespace Road
         {
             _roadView = roadView;
             _storage = storage;
-            _roadConfig = roadConfig;
             _gettingRandomBlock = gettingRandomBlock;
             _movingRoad = movingRoad;
 
-            _blocks = new BlockView[_roadConfig.NumberVisibleBlocks];
+            _blocks = new BlockView[roadConfig.NumberVisibleBlocks];
         }
+
+        private int GetLengthArray
+            => _blocks.Length;
 
         public void Initialize()
         {
@@ -65,10 +66,10 @@ namespace Road
 
             _storage.ReturnObj(currentBlock);
 
-            var lastIndex = (_roadConfig.NumberVisibleBlocks - 1 + _currentIndexBlock) % _roadConfig.NumberVisibleBlocks;
+            var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
             CreateBlock(_currentIndexBlock, lastIndex);
 
-            _currentIndexBlock = (_currentIndexBlock + 1) % _roadConfig.NumberVisibleBlocks;
+            _currentIndexBlock = (_currentIndexBlock + 1) % GetLengthArray;
         }
 
         private void CreateBlock(int currentIndex, int lastIndex)
@@ -97,7 +98,7 @@ namespace Road
 
         private void CreateStartingRemainingBlock()
         {
-            for (var i = 1; i < _roadConfig.NumberVisibleBlocks; i++)
+            for (var i = 1; i < GetLengthArray; i++)
                 CreateBlock(i, i - 1);
         }
 

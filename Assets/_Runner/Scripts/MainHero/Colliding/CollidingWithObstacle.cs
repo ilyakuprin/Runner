@@ -1,7 +1,7 @@
 using Collision;
-using Caching;
+using StringValues;
 using System;
-using ScriptableObj;
+using UnityEngine;
 using Zenject;
 
 namespace MainHero
@@ -11,19 +11,19 @@ namespace MainHero
         private readonly CollidingMainHero _collidingMainHero;
         private readonly HealthChanging _healthChanging;
         private readonly LayerCaching _layerCaching;
-        private readonly int _damage;
+        private readonly GettingDamageCalculation _gettingDamageCalculation;
 
         private int _layerObstacle;
 
         public CollidingWithObstacle(CollidingMainHero collidingMainHero,
                                      HealthChanging healthChanging,
                                      LayerCaching layerCaching,
-                                     ObstacleDamageConfig config)
+                                     GettingDamageCalculation gettingDamageCalculation)
         {
             _collidingMainHero = collidingMainHero;
             _healthChanging = healthChanging;
             _layerCaching = layerCaching;
-            _damage = config.Damage;
+            _gettingDamageCalculation = gettingDamageCalculation;
         }
 
         public void Initialize()
@@ -38,11 +38,11 @@ namespace MainHero
             _collidingMainHero.Triggered -= Collide;
         }
 
-        public void Collide(int layer)
+        public void Collide(GameObject gameObj)
         {
-            if (layer == _layerObstacle)
+            if (gameObj.layer == _layerObstacle)
             {
-                _healthChanging.TakeDamage(_damage);
+                _healthChanging.TakeDamage(_gettingDamageCalculation.GetDamage());
             }
         }
     }

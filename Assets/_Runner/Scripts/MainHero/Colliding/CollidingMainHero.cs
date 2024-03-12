@@ -10,7 +10,7 @@ namespace Collision
 {
     public class CollidingMainHero : IInitializable
     {
-        public event Action<int> Triggered;
+        public event Action<GameObject> Triggered;
 
         private readonly CharacterController _hero;
         private AsyncTriggerEnterTrigger _trigger;
@@ -35,8 +35,7 @@ namespace Collision
             {
                 var uniTask = _trigger.OnTriggerEnterAsync(_ct);
                 await uniTask;
-                var layer = uniTask.GetAwaiter().GetResult().gameObject.layer;
-                Triggered?.Invoke(layer);
+                Triggered?.Invoke(uniTask.GetAwaiter().GetResult().gameObject);
             }
         }
     }

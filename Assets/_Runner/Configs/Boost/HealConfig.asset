@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5c393600f0054a4abc4a57e06f0050b, type: 3}
-  m_Name: BoostConfig
+  m_Script: {fileID: 11500000, guid: 36db5b092861ea94c934ec78692df1a4, type: 3}
+  m_Name: HealConfig
   m_EditorClassIdentifier: 
-  <StartCountInPool>k__BackingField: 4
-  <BoostProbability>k__BackingField: 40
-  _boostDropChance:
-  - BoostName: 0
-    Chance: 40
-  - BoostName: 0
-    Chance: 40
-  - BoostName: 0
-    Chance: 20
+  <Heal>k__BackingField: 2

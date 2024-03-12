@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using ScriptableObj;
+using MainHero;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -11,16 +11,16 @@ namespace Road
     {
         public event Action Moved;
 
+        private readonly SpeedCalculation _speedCalculation;
         private readonly RoadView _roadView;
-        private readonly float _speed;
 
         private CancellationToken _ct;
 
         public MovingRoad(RoadView roadView,
-                          MainHeroStatConfig heroStatConfig)
+                          SpeedCalculation speedCalculation)
         {
             _roadView = roadView;
-            _speed = heroStatConfig.Speed;
+            _speedCalculation = speedCalculation;
         }
 
         public void Initialize()
@@ -34,7 +34,7 @@ namespace Road
         {
             while (!_ct.IsCancellationRequested)
             {
-                _roadView.Road.position += Time.deltaTime * (Vector3.back * _speed);
+                _roadView.Road.position += Time.deltaTime * (Vector3.back * _speedCalculation.GetSpeed());
 
                 Moved?.Invoke();
 

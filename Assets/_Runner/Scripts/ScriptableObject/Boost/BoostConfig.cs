@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Boosts;
 using UnityEngine;
 
@@ -15,12 +16,28 @@ namespace ScriptableObj
     [CreateAssetMenu(fileName = "BoostConfig", menuName = "Configs/BoostConfig")]
     public class BoostConfig : PoolConfig
     {
+        public int OneHundred = 100;
+
         [field: Tooltip("0 - нулевая вероятность, 100 - 100% вероятсноть"),
                 SerializeField, Range(0, 100)] public int BoostProbability { get; private set; }
 
-        [Tooltip("Шанс всех бустов должен быть в сумме 100"), SerializeField] private BoostDropChance[] _boostDropChance;
+        [Tooltip("Шанс всех бустов должен быть в сумме 100"),
+         SerializeField] private BoostDropChance[] _boostDropChance;
+
+        [field: SerializeField, Range(0f, 2f)] public float PositionHeight { get; private set; }
+
+        public int GetLength => _boostDropChance.Length;
+
+        public BoostDropChance GetChance(int index)
+            => _boostDropChance[index];
 
         private void OnValidate()
+        {
+            CheckingSumChance();
+            CheckingDistinct();
+        }
+
+        private void CheckingSumChance()
         {
             var sumChance = 0;
 
@@ -31,6 +48,14 @@ namespace ScriptableObj
 
             if (sumChance != 100)
                 Debug.LogError("Сумма шансов не равна 100");
+        }
+
+        private void CheckingDistinct()
+        {
+            var distinct = _boostDropChance.Distinct();
+
+            if (distinct.Count() != GetLength)
+                Debug.LogError("Есть повторяющиеся элементы");
         }
     }
 }
