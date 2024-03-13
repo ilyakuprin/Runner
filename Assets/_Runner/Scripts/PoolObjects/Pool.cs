@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace PoolObjects
 {
@@ -82,6 +81,6 @@ namespace PoolObjects
         }
 
         private static void ReturnError()
-            => throw new NotImplementedException("Объект не соответсвует пулу");
+            => throw new NotImplementedException("Object does not match pool");
     }
 }

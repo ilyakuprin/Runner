@@ -9,7 +9,7 @@ namespace ScriptableObj
     public struct BoostDropChance
     {
         public EnumNameBoost BoostName;
-        [Tooltip("0 - нулевая вероятность, 100 - 100% вероятсноть"),
+        [Tooltip("0 - zero probability, 100 - 100% probability"),
          Range(0, 100)] public int Chance;
     }
 
@@ -18,10 +18,10 @@ namespace ScriptableObj
     {
         public int OneHundred = 100;
 
-        [field: Tooltip("0 - нулевая вероятность, 100 - 100% вероятсноть"),
+        [field: Tooltip("0 - zero probability, 100 - 100% probability"),
                 SerializeField, Range(0, 100)] public int BoostProbability { get; private set; }
 
-        [Tooltip("Шанс всех бустов должен быть в сумме 100"),
+        [Tooltip("The chance of all boosts should be 100 in total"),
          SerializeField] private BoostDropChance[] _boostDropChance;
 
         [field: SerializeField, Range(0f, 2f)] public float PositionHeight { get; private set; }
@@ -47,7 +47,7 @@ namespace ScriptableObj
             }
 
             if (sumChance != 100)
-                Debug.LogError("Сумма шансов не равна 100");
+                Debug.LogError("The sum of the chances does not equal 100");
         }
 
         private void CheckingDistinct()
@@ -55,7 +55,7 @@ namespace ScriptableObj
             var distinct = _boostDropChance.Distinct();
 
             if (distinct.Count() != GetLength)
-                Debug.LogError("Есть повторяющиеся элементы");
+                Debug.LogError("There are repeating elements");
         }
     }
 }

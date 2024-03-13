@@ -54,14 +54,12 @@ namespace MainHero
             {
                 SetVelocityY();
                 _isFirstJump = false; 
-                //_mainHeroView.Anim.SetTrigger(AnimName);
 
                 Jump().Forget();
             }
             else if (!_isSecondJumpPressed)
             {
                 SetVelocityY();
-                 //_mainHeroView.Anim.SetTrigger(AnimName);
                 _isSecondJumpPressed = true;
                 
             }

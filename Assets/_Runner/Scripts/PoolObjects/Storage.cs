@@ -6,7 +6,7 @@ namespace PoolObjects
 {
     public class Storage<T> : IInitializable
     {
-        private const string Error = "объект отсутствует в массиве префабов";
+        private const string Error = "The object is missing from the prefab array";
 
         private readonly StorageView<T> _storageView;
         private readonly PoolConfig _poolConfig;

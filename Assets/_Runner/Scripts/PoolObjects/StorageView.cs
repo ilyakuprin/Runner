@@ -21,7 +21,7 @@ namespace PoolObjects
             var distinct = _prefabs.Distinct();
 
             if (distinct.Count() != GetLength)
-                Debug.LogError("есть повтор€ющиес€ элементы");
+                Debug.LogError("There are repeating elements");
         }
     }
 }
