@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4883440073111918528}
   - component: {fileID: -2307341035343872566}
+  - component: {fileID: 7910062098561044766}
+  - component: {fileID: 535175037754466470}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
@@ -46,6 +48,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _object: {fileID: 4883440073111918528}
   _nameBoost: 0
+--- !u!114 &7910062098561044766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228299234252295546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d481fa9a1dae242aa16bd226f458ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadableSprite:
+    m_AssetGUID: 76150cc01c96ecb4a9abb981492077d9
+    m_SubObjectName: 16985_Caduceus
+    m_SubObjectType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  _meshFilter: {fileID: 6683788412647687588}
+--- !u!114 &535175037754466470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228299234252295546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c0e18f52df5bd44a307e56e965fa62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadableSprite:
+    m_AssetGUID: 8454dc5810f427c4583ffe4a1111916c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _meshRenderer: {fileID: 250998076843697956}
 --- !u!1 &7713076164663345335
 GameObject:
   m_ObjectHideFlags: 0
