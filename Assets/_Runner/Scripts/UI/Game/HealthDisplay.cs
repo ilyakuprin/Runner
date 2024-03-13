@@ -10,15 +10,15 @@ namespace UI
     {
         private const float StartValue = 1f;
 
-        private readonly HealthBarView _healthBarView;
+        private readonly GameCanvasView _gameCanvasView;
         private readonly HealthChanging _healthChanging;
         private readonly Gradient _gradient;
 
-        public HealthDisplay(HealthBarView healthBarView,
+        public HealthDisplay(GameCanvasView gameCanvasView,
                              HealthChanging healthChanging,
                              MainHeroStatConfig heroStat)
         {
-            _healthBarView = healthBarView;
+            _gameCanvasView = gameCanvasView;
             _healthChanging = healthChanging;
             _gradient = heroStat.GradientHealth;
         }
@@ -43,8 +43,8 @@ namespace UI
 
         private void SetHealBar(float value)
         {
-            _healthBarView.Bar.fillAmount = value;
-            _healthBarView.Bar.color = _gradient.Evaluate(value);
+            _gameCanvasView.Bar.fillAmount = value;
+            _gameCanvasView.Bar.color = _gradient.Evaluate(value);
         }
     }
 }

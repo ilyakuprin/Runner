@@ -17,9 +17,9 @@ MonoBehaviour:
   <BoostProbability>k__BackingField: 70
   _boostDropChance:
   - BoostName: 0
-    Chance: 0
+    Chance: 30
   - BoostName: 1
-    Chance: 50
+    Chance: 30
   - BoostName: 2
-    Chance: 50
+    Chance: 40
   <PositionHeight>k__BackingField: 1

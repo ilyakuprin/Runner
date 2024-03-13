@@ -6,6 +6,7 @@ namespace MainHero
     public class HealthChanging
     {
         public event Action Dead;
+        public event Action TakenDamage;
         public event Action<int> HealthChanged;
 
         private const int MinHealth = 0;
@@ -33,6 +34,7 @@ namespace MainHero
             }
 
             HealthChanged?.Invoke(_currentHealth);
+            TakenDamage?.Invoke();
         }
 
         public void TakeHeal(int value)

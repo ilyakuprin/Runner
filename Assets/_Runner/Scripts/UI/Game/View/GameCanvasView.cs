@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class HealthBarView : MonoBehaviour
+    public class GameCanvasView : MonoBehaviour
     {
         [field: SerializeField] public Image Bar { get; private set; }
+        [field: SerializeField] public Image Vignette { get; private set; }
     }
 }

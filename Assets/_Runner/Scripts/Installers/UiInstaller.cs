@@ -6,7 +6,7 @@ namespace Installer
 {
     public class UiInstaller : MonoInstaller
     {
-        [SerializeField] private HealthBarView _healthBarView;
+        [SerializeField] private GameCanvasView _gameCanvasView;
         [SerializeField] private DefeatCanvasView _defeatCanvasView;
         [SerializeField] private ObstacleCountingView _obstacleCountingView;
         [SerializeField] private ResultCanvasView _resultCanvasView;
@@ -14,7 +14,7 @@ namespace Installer
 
         public override void InstallBindings()
         {
-            Container.Bind<HealthBarView>().FromInstance(_healthBarView).AsSingle();
+            Container.Bind<GameCanvasView>().FromInstance(_gameCanvasView).AsSingle();
             Container.Bind<DefeatCanvasView>().FromInstance(_defeatCanvasView).AsSingle();
             Container.Bind<ObstacleCountingView>().FromInstance(_obstacleCountingView).AsSingle();
             Container.Bind<ResultCanvasView>().FromInstance(_resultCanvasView).AsSingle();
@@ -26,6 +26,7 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<Restarting>().AsSingle();
             Container.BindInterfacesAndSelfTo<ContinuationGameForAd>().AsSingle();
             Container.BindInterfacesAndSelfTo<ActiveWinCanvas>().AsSingle();
+            Container.BindInterfacesAndSelfTo<VignetteDisplaying>().AsSingle();
         }
     }
 }

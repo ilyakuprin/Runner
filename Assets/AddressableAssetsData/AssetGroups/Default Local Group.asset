@@ -49,6 +49,10 @@ MonoBehaviour:
     m_Address: InvulnerabilityMaterial
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 8cfb0599d38102645a249bdbdd88cc4a
+    m_Address: Vignette
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c20d31d037eb6a1468fced284c2948c9, type: 2}
   m_SchemaSet:

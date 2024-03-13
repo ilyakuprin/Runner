@@ -28,7 +28,7 @@ namespace UI
         public void AddCounter(int index)
         {
             _obstacleCount[index].Counter++;
-            Debug.Log(_obstacleCount[index].Counter);
+            
             var obst = GetObstacle(index);
             obst.TextMeshCounter.text = obst.Counter.ToString();
         }
