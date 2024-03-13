@@ -289,7 +289,7 @@ RectTransform:
   - {fileID: 871336103}
   - {fileID: 1821692311}
   m_Father: {fileID: 1175235562}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -925,6 +925,14 @@ GameObject:
   m_Component:
   - component: {fileID: 408620588}
   - component: {fileID: 408620589}
+  - component: {fileID: 408620598}
+  - component: {fileID: 408620597}
+  - component: {fileID: 408620596}
+  - component: {fileID: 408620595}
+  - component: {fileID: 408620594}
+  - component: {fileID: 408620593}
+  - component: {fileID: 408620592}
+  - component: {fileID: 408620591}
   - component: {fileID: 408620590}
   m_Layer: 0
   m_Name: SceneContext
@@ -961,6 +969,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: 408620598}
+  - {fileID: 408620597}
+  - {fileID: 408620596}
+  - {fileID: 408620595}
+  - {fileID: 408620594}
+  - {fileID: 408620593}
+  - {fileID: 408620592}
+  - {fileID: 408620591}
   - {fileID: 408620590}
   _installerPrefabs: []
   _autoRun: 1
@@ -988,26 +1004,122 @@ MonoBehaviour:
   m_GameObject: {fileID: 408620587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 555cb11dec52bff4a940c79d97037639, type: 3}
+  m_Script: {fileID: 11500000, guid: 637fddf9032a7b544a151290bc715139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storageBlocksView: {fileID: 1531422013}
-  _roadView: {fileID: 1531422014}
-  _roadConfig: {fileID: 11400000, guid: e5542bd19f4594447abd27b9fc274a58, type: 2}
-  _mainHero: {fileID: 1531422015}
-  _mainHeroStatConfig: {fileID: 11400000, guid: ec4237c43c5b01e4bb9279231205e77b, type: 2}
-  _obstacleDamageConfig: {fileID: 11400000, guid: a95cce804ca2bac4c918778458ea3f5b, type: 2}
   _healthBarView: {fileID: 1531422016}
-  _boostConfig: {fileID: 11400000, guid: 21f4c50008bf5af4298185c321eb42d8, type: 2}
-  _storageBoostView: {fileID: 1531422017}
-  _healConfig: {fileID: 11400000, guid: 60ff2f6a6fc6849439d897883d7bf87b, type: 2}
-  _speedConfig: {fileID: 11400000, guid: 4bf405f4395362b4fae5f1a5696f6692, type: 2}
-  _invulnerabilityConfig: {fileID: 11400000, guid: 480bc217376d57a44b137af8050adfa6, type: 2}
   _defeatCanvasView: {fileID: 1531422018}
-  _movementAfterAdConfig: {fileID: 11400000, guid: f49b8c03929be914b806a089c7590117, type: 2}
   _obstacleCountingView: {fileID: 1531422019}
   _resultCanvasView: {fileID: 1531422020}
   _winCanvasView: {fileID: 1531422021}
+--- !u!114 &408620591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833b111e2d3e88b43beb7cf68c1f3058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &408620592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594015aade08fa047ab8b35ad28bcd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roadConfig: {fileID: 11400000, guid: e5542bd19f4594447abd27b9fc274a58, type: 2}
+  _mainHeroStatConfig: {fileID: 11400000, guid: ec4237c43c5b01e4bb9279231205e77b, type: 2}
+  _obstacleDamageConfig: {fileID: 11400000, guid: a95cce804ca2bac4c918778458ea3f5b, type: 2}
+  _boostConfig: {fileID: 11400000, guid: 21f4c50008bf5af4298185c321eb42d8, type: 2}
+  _healConfig: {fileID: 11400000, guid: 60ff2f6a6fc6849439d897883d7bf87b, type: 2}
+  _speedConfig: {fileID: 11400000, guid: 4bf405f4395362b4fae5f1a5696f6692, type: 2}
+  _invulnerabilityConfig: {fileID: 11400000, guid: 480bc217376d57a44b137af8050adfa6, type: 2}
+  _movementAfterAdConfig: {fileID: 11400000, guid: f49b8c03929be914b806a089c7590117, type: 2}
+--- !u!114 &408620593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9a93804d1a44141a32d4a7d67e637e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roadView: {fileID: 1531422014}
+--- !u!114 &408620594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d1bcf9c5887349bd890640c64d83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainHero: {fileID: 1531422015}
+--- !u!114 &408620595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c078456a7eca6e0438c16e1b49ed0b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &408620596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbe76eda3a506b409fd9bfdff9bdc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &408620597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ec4a2f9b130d24fb62f91672fb545e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storageBoostView: {fileID: 1531422017}
+--- !u!114 &408620598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408620587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cd7cfea33904e4e91906f8722d19f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storageBlocksView: {fileID: 1531422013}
 --- !u!1 &423949129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1492,7 @@ RectTransform:
   - {fileID: 707369099}
   - {fileID: 498239538}
   m_Father: {fileID: 1175235562}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3215,9 +3327,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 469938513}
   - {fileID: 85582182}
   - {fileID: 1923688508}
+  - {fileID: 469938513}
   m_Father: {fileID: 1593195723}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4841,7 +4953,7 @@ RectTransform:
   - {fileID: 1120578277}
   - {fileID: 1071591630}
   m_Father: {fileID: 1175235562}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
