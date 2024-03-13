@@ -13,8 +13,6 @@ namespace MainHero
         private readonly LayerCaching _layerCaching;
         private readonly GettingDamageCalculation _gettingDamageCalculation;
 
-        private int _layerObstacle;
-
         public CollidingWithObstacle(CollidingMainHero collidingMainHero,
                                      HealthChanging healthChanging,
                                      LayerCaching layerCaching,
@@ -28,8 +26,6 @@ namespace MainHero
 
         public void Initialize()
         {
-            _layerObstacle = _layerCaching.Obstacle;
-
             _collidingMainHero.Triggered += Collide;
         }
 
@@ -40,7 +36,7 @@ namespace MainHero
 
         public void Collide(GameObject gameObj)
         {
-            if (gameObj.layer == _layerObstacle)
+            if (gameObj.layer == _layerCaching.Obstacle)
             {
                 _healthChanging.TakeDamage(_gettingDamageCalculation.GetDamage());
             }

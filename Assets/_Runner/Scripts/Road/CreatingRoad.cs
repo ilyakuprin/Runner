@@ -9,6 +9,7 @@ namespace Road
     public class CreatingRoad : IInitializable, IDisposable
     {
         public event Action<BlockView> Created;
+        public event Action<EnumNameBlock> Returned;
 
         private readonly RoadView _roadView;
         private readonly StorageBlocks _storage;
@@ -19,6 +20,8 @@ namespace Road
         private bool _isCanRotate;
         private int _currentIndexBlock;
         private float _pointDeletion;
+        private bool _isNeedCreate = true;
+        private bool _isFinalBlockCreated;
 
         public CreatingRoad(RoadView roadView,
                             StorageBlocks storage,
@@ -50,12 +53,13 @@ namespace Road
         }
 
         public void Dispose()
-        {
-            _movingRoad.Moved -= ReplaceBlock;
-        }
+            => _movingRoad.Moved -= ReplaceBlock;
 
         public void SetIsCanRotate(bool value)
             => _isCanRotate = value;
+
+        public void StopCreate()
+            => _isNeedCreate = false;
 
         private void ReplaceBlock()
         {
@@ -65,9 +69,33 @@ namespace Road
                 return;
 
             _storage.ReturnObj(currentBlock);
+            Returned?.Invoke(currentBlock.GetNameBlock);
 
-            var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
-            CreateBlock(_currentIndexBlock, lastIndex);
+            if (_isNeedCreate)
+            {
+                var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
+                CreateBlock(_currentIndexBlock, lastIndex);
+            }
+            else if (!_isFinalBlockCreated)
+            {
+                _isFinalBlockCreated = true;
+
+                var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
+
+                SetLocation(lastIndex, _roadView.FinalBlock);
+                _roadView.FinalBlock.gameObject.SetActive(true);
+            }
+            else
+            {
+                _blocks[_currentIndexBlock] = null;
+
+                var nextIndex = (_currentIndexBlock + 1) % GetLengthArray;
+                if (_blocks[nextIndex] == null)
+                {
+                    Dispose();
+                    return;
+                }
+            }
 
             _currentIndexBlock = (_currentIndexBlock + 1) % GetLengthArray;
         }
@@ -78,14 +106,19 @@ namespace Road
                 ? _gettingRandomBlock.GetFromAll()
                 : _gettingRandomBlock.GetWithoutRotate();
 
-            var lastBlock = _blocks[lastIndex];
-            SetPosition(randomBlock, lastBlock.GetEnd.position);
-            SetParent(randomBlock);
-            SetRotation(randomBlock, lastBlock);
+            SetLocation(lastIndex, randomBlock);
 
             _blocks[currentIndex] = randomBlock;
 
             Created?.Invoke(randomBlock);
+        }
+
+        private void SetLocation(int lastIndex, PoolObjects.IPoolable currentBlock)
+        {
+            var lastBlock = _blocks[lastIndex];
+            SetPosition(currentBlock, lastBlock.GetEnd.position);
+            SetParent(currentBlock);
+            SetRotation(currentBlock, lastBlock);
         }
 
         private void CreateStartingFirstBlock()

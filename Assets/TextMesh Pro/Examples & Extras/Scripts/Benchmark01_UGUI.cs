@@ -22,7 +22,7 @@ namespace TMPro.Examples
         private const string label01 = "The <#0050FF>count is: </color>";
         private const string label02 = "The <color=#0050FF>count is: </color>";
 
-        //private const string label01 = "TextMesh <#0050FF>Pro!</color>  The count is: {0}";
+        //private const string label01 = "TextMeshName <#0050FF>Pro!</color>  The count is: {0}";
         //private const string label02 = "Text Mesh<color=#0050FF>        The count is: </color>";
 
         //private string m_string;
@@ -38,7 +38,7 @@ namespace TMPro.Examples
 
 
 
-            if (BenchmarkType == 0) // TextMesh Pro Component
+            if (BenchmarkType == 0) // TextMeshName Pro Component
             {
                 m_textMeshPro = gameObject.AddComponent<TextMeshProUGUI>();
                 //m_textContainer = GetComponent<TextContainer>();
@@ -70,7 +70,7 @@ namespace TMPro.Examples
 
 
             }
-            else if (BenchmarkType == 1) // TextMesh
+            else if (BenchmarkType == 1) // TextMeshName
             {
                 m_textMesh = gameObject.AddComponent<Text>();
 

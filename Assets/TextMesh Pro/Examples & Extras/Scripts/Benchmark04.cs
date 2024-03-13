@@ -31,7 +31,7 @@ namespace TMPro.Examples
             {
                 if (SpawnType == 0)
                 {
-                    // TextMesh Pro Implementation
+                    // TextMeshName Pro Implementation
                     GameObject go = new GameObject("Text - " + i + " Pts");
 
                     if (lineHeight > orthoSize * 2) return;
@@ -57,7 +57,7 @@ namespace TMPro.Examples
                 }
                 else
                 {
-                    // TextMesh Implementation
+                    // TextMeshName Implementation
                     // Causes crashes since atlas needed exceeds 4096 X 4096
                     /*
                     GameObject go = new GameObject("Arial " + i);
@@ -66,7 +66,7 @@ namespace TMPro.Examples
 
                     go.transform.position = m_Transform.position + new Vector3(ratio * -orthoSize * 0.975f, orthoSize * 0.975f - lineHeight, 1);
                                        
-                    TextMesh textMesh = go.AddComponent<TextMesh>();
+                    TextMeshName textMesh = go.AddComponent<TextMeshName>();
                     textMesh.font = Resources.Load("Fonts/ARIAL", typeof(Font)) as Font;
                     textMesh.renderer.sharedMaterial = textMesh.font.material;
                     textMesh.anchor = TextAnchor.MiddleLeft;

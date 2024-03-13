@@ -28,6 +28,9 @@ namespace Installer
         [SerializeField] private InvulnerabilityConfig _invulnerabilityConfig;
         [SerializeField] private DefeatCanvasView _defeatCanvasView;
         [SerializeField] private MovementAfterAdConfig _movementAfterAdConfig;
+        [SerializeField] private ObstacleCountingView _obstacleCountingView;
+        [SerializeField] private ResultCanvasView _resultCanvasView;
+        [SerializeField] private WinCanvasView _winCanvasView;
 
         public override void InstallBindings()
         {
@@ -45,6 +48,9 @@ namespace Installer
             Container.Bind<InvulnerabilityConfig>().FromInstance(_invulnerabilityConfig).AsSingle();
             Container.Bind<DefeatCanvasView>().FromInstance(_defeatCanvasView).AsSingle();
             Container.Bind<MovementAfterAdConfig>().FromInstance(_movementAfterAdConfig).AsSingle();
+            Container.Bind<ObstacleCountingView>().FromInstance(_obstacleCountingView).AsSingle();
+            Container.Bind<ResultCanvasView>().FromInstance(_resultCanvasView).AsSingle();
+            Container.Bind<WinCanvasView>().FromInstance(_winCanvasView).AsSingle();
 
             Container.BindInterfacesAndSelfTo<LayerCaching>().AsSingle();
             Container.BindInterfacesAndSelfTo<AnimCaching>().AsSingle();
@@ -72,7 +78,7 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<GettingSpeed>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingDamageCalculation>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingInvulnerability>().AsSingle();
-            Container.BindInterfacesAndSelfTo<SettingActivePauseDefeat>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SettingActivePauseResult>().AsSingle();
             Container.BindInterfacesAndSelfTo<DeathMainHeroAnim>().AsSingle();
             Container.BindInterfacesAndSelfTo<SettingActiveDefeatCanvas>().AsSingle();
             Container.BindInterfacesAndSelfTo<Restarting>().AsSingle();
@@ -80,6 +86,9 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<ShiftingRoadBack>().AsSingle();
             Container.BindInterfacesAndSelfTo<MovementAfterAd>().AsSingle();
             Container.BindInterfacesAndSelfTo<ContinuationGameForAd>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ObstacleCounting>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CollidingWithFinalBlock>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ActiveWinCanvas>().AsSingle();
         }
     }
 }

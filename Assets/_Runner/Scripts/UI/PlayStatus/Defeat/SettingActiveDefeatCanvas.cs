@@ -38,6 +38,6 @@ namespace UI
             => SetActive(false);
 
         private void SetActive(bool value)
-            => _defeatCanvasView.DefeatCanvas.gameObject.SetActive(value);
+            => _defeatCanvasView.DefeatObj.SetActive(value);
     }
 }

@@ -59,7 +59,7 @@ namespace Block
                 _counterObstacles++;
 
                 if (_counterObstacles >= _roadConfig.NumberAllBlocks)
-                    _creatingRoad.Dispose();
+                    _creatingRoad.StopCreate();
             }
         }
 

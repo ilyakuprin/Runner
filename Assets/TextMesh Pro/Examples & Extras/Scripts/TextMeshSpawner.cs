@@ -27,7 +27,7 @@ namespace TMPro.Examples
             {
                 if (SpawnType == 0)
                 {
-                    // TextMesh Pro Implementation     
+                    // TextMeshName Pro Implementation     
                     //go.transform.localScale = new Vector3(2, 2, 2);
                     GameObject go = new GameObject(); //"NPC " + i);
                     go.transform.position = new Vector3(Random.Range(-95f, 95f), 0.5f, Random.Range(-95f, 95f));
@@ -53,7 +53,7 @@ namespace TMPro.Examples
                 }
                 else
                 {
-                    // TextMesh Implementation
+                    // TextMeshName Implementation
                     GameObject go = new GameObject(); //"NPC " + i);
                     go.transform.position = new Vector3(Random.Range(-95f, 95f), 0.5f, Random.Range(-95f, 95f));
 
