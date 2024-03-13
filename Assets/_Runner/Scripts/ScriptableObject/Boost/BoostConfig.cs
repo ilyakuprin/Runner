@@ -16,7 +16,7 @@ namespace ScriptableObj
     [CreateAssetMenu(fileName = "BoostConfig", menuName = "Configs/BoostConfig")]
     public class BoostConfig : PoolConfig
     {
-        public int OneHundred = 100;
+        [HideInInspector] public int OneHundred = 100;
 
         [field: Tooltip("0 - zero probability, 100 - 100% probability"),
                 SerializeField, Range(0, 100)] public int BoostProbability { get; private set; }

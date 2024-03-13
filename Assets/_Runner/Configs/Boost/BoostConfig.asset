@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StartCountInPool>k__BackingField: 1
   OneHundred: 100
-  <BoostProbability>k__BackingField: 100
+  <BoostProbability>k__BackingField: 70
   _boostDropChance:
   - BoostName: 0
     Chance: 0

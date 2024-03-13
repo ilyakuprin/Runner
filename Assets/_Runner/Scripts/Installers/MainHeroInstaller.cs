@@ -25,6 +25,7 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<DeathMainHeroAnim>().AsSingle();
             Container.BindInterfacesAndSelfTo<ContinueRunningAnim>().AsSingle();
             Container.BindInterfacesAndSelfTo<CollidingWithFinalBlock>().AsSingle();
+            Container.BindInterfacesAndSelfTo<IdleMainHeroAnim>().AsSingle();
         }
     }
 }
