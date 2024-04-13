@@ -15,8 +15,6 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<ChangingParentRoadRotation>().AsSingle();
             Container.BindInterfacesAndSelfTo<CreatingRoad>().AsSingle();
             Container.BindInterfacesAndSelfTo<MovingRoad>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ShiftingRoadBack>().AsSingle();
-            Container.BindInterfacesAndSelfTo<MovementAfterAd>().AsSingle();
             Container.BindInterfacesAndSelfTo<ObstacleCounting>().AsSingle();
         }
     }

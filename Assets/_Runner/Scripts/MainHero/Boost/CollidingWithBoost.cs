@@ -12,20 +12,19 @@ namespace Collision
         public event Action<string> Collided;
 
         private readonly CollidingMainHero _collidingMainHero;
-        private readonly LayerCaching _layerCaching;
         private readonly CreatingBoost _creatingBoost;
+        private int _boost;
 
         public CollidingWithBoost(CollidingMainHero collidingMainHero,
-                                  LayerCaching layerCaching,
                                   CreatingBoost creatingBoost)
         {
             _collidingMainHero = collidingMainHero;
-            _layerCaching = layerCaching;
             _creatingBoost = creatingBoost;
         }
 
         public void Initialize()
         {
+            _boost = LayerCaching.Boost;
             _collidingMainHero.Triggered += Collide;
         }
 
@@ -36,7 +35,7 @@ namespace Collision
 
         public void Collide(GameObject gameObj)
         {
-            if (gameObj.layer != _layerCaching.Boost) return;
+            if (gameObj.layer != _boost) return;
 
             Collided?.Invoke(gameObj.tag);
 

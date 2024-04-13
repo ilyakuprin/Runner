@@ -2,8 +2,8 @@ namespace StringValues
 {
     public class Tags
     {
-        public string Heal => "Heal";
-        public string Speed => "Speed";
-        public string Invulnerability => "Invulnerability";
+        public static string Heal => "Heal";
+        public static string Speed => "Speed";
+        public static string Invulnerability => "Invulnerability";
     }
 }

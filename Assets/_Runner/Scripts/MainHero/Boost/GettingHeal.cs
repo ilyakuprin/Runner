@@ -11,21 +11,24 @@ namespace MainHero
         private readonly HealConfig _healConfig;
         private readonly HealthChanging _healthChanging;
         private readonly CollidingWithBoost _collidingWithBoost;
-        private readonly string _tag;
+        
+        private string _tag;
 
         public GettingHeal(HealConfig healConfig,
-                           Tags tags,
                            HealthChanging healthChanging,
                            CollidingWithBoost collidingWithBoost)
         {
             _healConfig = healConfig;
             _healthChanging = healthChanging;
             _collidingWithBoost = collidingWithBoost;
-            _tag = tags.Heal;
+            
         }
 
         public void Initialize()
-            => _collidingWithBoost.Collided += Take;
+        {
+            _tag = Tags.Heal;
+            _collidingWithBoost.Collided += Take;
+        } 
 
         public void Dispose()
             => _collidingWithBoost.Collided -= Take;

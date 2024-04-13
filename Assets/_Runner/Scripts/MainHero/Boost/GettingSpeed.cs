@@ -8,28 +8,30 @@ using Zenject;
 
 namespace MainHero
 {
-    public class GettingSpeed : IInitializable, IDisposable, ITakebleBoost, IResetableBoost
+    public class GettingSpeed : IInitializable, IDisposable, ITakebleBoost
     {
         private readonly SpeedConfig _speedConfig;
         private readonly SpeedCalculation _speedCalculation;
         private readonly CollidingWithBoost _collidingWithBoost;
-        private readonly string _tag;
+        
+        private string _tag;
 
         private CancellationTokenSource _cts = new CancellationTokenSource();
 
         public GettingSpeed(SpeedConfig speedConfig,
-                            Tags tags,
                             SpeedCalculation speedCalculation,
                             CollidingWithBoost collidingWithBoost)
         {
             _speedConfig = speedConfig;
             _speedCalculation = speedCalculation;
             _collidingWithBoost = collidingWithBoost;
-            _tag = tags.Speed;
         }
 
         public void Initialize()
-            => _collidingWithBoost.Collided += Take;
+        {
+            _tag = Tags.Speed;
+            _collidingWithBoost.Collided += Take;
+        }
 
         public void Dispose()
         {
@@ -45,12 +47,6 @@ namespace MainHero
             {
                 Get();
             }
-        }
-
-        public void ResetBoost()
-        {
-            _cts.Cancel();
-            _speedCalculation.ResetModificator();
         }
 
         private void Get()

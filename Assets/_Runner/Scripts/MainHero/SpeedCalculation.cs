@@ -4,7 +4,7 @@ namespace MainHero
 {
     public class SpeedCalculation
     {
-        public const float StandardModificator = 1f;
+        private const float StandardModificator = 1f;
 
         private readonly float _speed;
 

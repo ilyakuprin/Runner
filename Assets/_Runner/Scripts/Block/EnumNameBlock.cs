@@ -2,11 +2,8 @@ namespace Block
 {
     public enum EnumNameBlock
     {
-        Saw,
-        Fence,
+        WallCenter,
         Empty,
-        Chasm,
-        ChasmLong,
         Right,
         Left
     }

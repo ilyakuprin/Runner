@@ -43,7 +43,7 @@ namespace Road
 
         private async UniTask Move()
         {
-            while (!_isPause)
+            while (!_isPause && !_ct.IsCancellationRequested)
             {
                 _roadView.Road.position += Time.deltaTime * (Vector3.back * _speedCalculation.GetSpeed());
 

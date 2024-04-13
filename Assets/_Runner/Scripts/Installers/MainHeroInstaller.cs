@@ -16,16 +16,11 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<RoadRotation>().AsSingle();
             Container.BindInterfacesAndSelfTo<HealthChanging>().AsSingle();
             Container.BindInterfacesAndSelfTo<CollidingWithObstacle>().AsSingle();
-            Container.BindInterfacesAndSelfTo<JumpingMainHero>().AsSingle();
-            Container.BindInterfacesAndSelfTo<JumpingMainHeroAnim>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingHeal>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingSpeed>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingDamageCalculation>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingInvulnerability>().AsSingle();
             Container.BindInterfacesAndSelfTo<DeathMainHeroAnim>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ContinueRunningAnim>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CollidingWithFinalBlock>().AsSingle();
-            Container.BindInterfacesAndSelfTo<IdleMainHeroAnim>().AsSingle();
         }
     }
 }

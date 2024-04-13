@@ -16,27 +16,26 @@ namespace MainHero
 
         private readonly Transform _road;
         private readonly CharacterController _hero;
-        private readonly LayerCaching _layerCaching;
         private readonly ChangingParentRoadRotation _changingParentRoadRotation;
         private readonly CollidingMainHero _collidingMainHero;
 
+        private int _trajectoryChangeBlock;
         private CancellationToken _ct;
-
+        
         public RoadRotation(RoadView roadView,
                             MainHeroView mainHeroView,
-                            LayerCaching layerCaching,
                             ChangingParentRoadRotation changingParentRoadRotation,
                             CollidingMainHero collidingMainHero)
         {
             _road = roadView.Road;
             _hero = mainHeroView.HeroController;
-            _layerCaching = layerCaching;
             _changingParentRoadRotation = changingParentRoadRotation;
             _collidingMainHero = collidingMainHero;
         }
 
         public void Initialize()
         {
+            _trajectoryChangeBlock = LayerCaching.TrajectoryChangeBlock;
             _ct = _hero.GetCancellationTokenOnDestroy();
 
             _collidingMainHero.Triggered += Collide;
@@ -49,7 +48,7 @@ namespace MainHero
 
         public void Collide(GameObject gameObj)
         {
-            if (gameObj.layer == _layerCaching.TrajectoryChangeBlock)
+            if (gameObj.layer == _trajectoryChangeBlock)
             {
                 Rotate().Forget();
             }

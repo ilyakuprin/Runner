@@ -1,26 +1,11 @@
 using UnityEngine;
-using Zenject;
 
 namespace StringValues
 {
-    public class LayerCaching : IInitializable
+    public class LayerCaching
     {
-        private const string NameTrajectoryChangeBlock = "TrajectoryChangeBlock";
-        private const string NameObstacle = "Obstacle";
-        private const string NameBoost = "Boost";
-        private const string NameFinal = "Final";
-
-        public int TrajectoryChangeBlock { get; private set; }
-        public int Obstacle { get; private set; }
-        public int Boost { get; private set; }
-        public int Final { get; private set; }
-
-        public void Initialize()
-        {
-            TrajectoryChangeBlock = LayerMask.NameToLayer(NameTrajectoryChangeBlock);
-            Obstacle = LayerMask.NameToLayer(NameObstacle);
-            Boost = LayerMask.NameToLayer(NameBoost);
-            Final = LayerMask.NameToLayer(NameFinal);
-        }
+        public static int TrajectoryChangeBlock => LayerMask.NameToLayer("TrajectoryChangeBlock");
+        public static int Obstacle => LayerMask.NameToLayer("Obstacle");
+        public static int Boost => LayerMask.NameToLayer("Boost");
     }
 }
