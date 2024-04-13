@@ -13,7 +13,6 @@ namespace Installer
         [SerializeField] private HealConfig _healConfig;
         [SerializeField] private SpeedConfig _speedConfig;
         [SerializeField] private InvulnerabilityConfig _invulnerabilityConfig;
-        [SerializeField] private MovementAfterAdConfig _movementAfterAdConfig;
 
         public override void InstallBindings()
         {
@@ -24,7 +23,6 @@ namespace Installer
             Container.Bind<HealConfig>().FromInstance(_healConfig).AsSingle();
             Container.Bind<SpeedConfig>().FromInstance(_speedConfig).AsSingle();
             Container.Bind<InvulnerabilityConfig>().FromInstance(_invulnerabilityConfig).AsSingle();
-            Container.Bind<MovementAfterAdConfig>().FromInstance(_movementAfterAdConfig).AsSingle();
         }
     }
 }

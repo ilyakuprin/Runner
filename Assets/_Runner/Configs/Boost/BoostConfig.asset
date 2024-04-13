@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c393600f0054a4abc4a57e06f0050b, type: 3}
   m_Name: BoostConfig
   m_EditorClassIdentifier: 
-  <StartCountInPool>k__BackingField: 1
+  <StartCountInPool>k__BackingField: 2
   OneHundred: 100
   <BoostProbability>k__BackingField: 70
   _boostDropChance:

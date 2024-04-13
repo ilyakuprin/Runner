@@ -419,7 +419,6 @@ MonoBehaviour:
   _healConfig: {fileID: 11400000, guid: 60ff2f6a6fc6849439d897883d7bf87b, type: 2}
   _speedConfig: {fileID: 11400000, guid: 4bf405f4395362b4fae5f1a5696f6692, type: 2}
   _invulnerabilityConfig: {fileID: 11400000, guid: 480bc217376d57a44b137af8050adfa6, type: 2}
-  _movementAfterAdConfig: {fileID: 11400000, guid: f49b8c03929be914b806a089c7590117, type: 2}
 --- !u!114 &408620593
 MonoBehaviour:
   m_ObjectHideFlags: 0
