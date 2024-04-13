@@ -4,7 +4,7 @@ using Zenject;
 
 namespace PoolObjects
 {
-    public class Storage<T> : IInitializable
+    public abstract class Storage<T> : IInitializable where T : IPoolable
     {
         private const string Error = "The object is missing from the prefab array";
 
@@ -12,8 +12,8 @@ namespace PoolObjects
         private readonly PoolConfig _poolConfig;
         private Pool<T>[] _pools;
 
-        public Storage(StorageView<T> storageView,
-                       PoolConfig poolConfig)
+        protected Storage(StorageView<T> storageView,
+                          PoolConfig poolConfig)
         {
             _storageView = storageView;
             _poolConfig = poolConfig;
@@ -31,18 +31,17 @@ namespace PoolObjects
         {
             for (var i = 0; i < GetLength; i++)
             {
-                if (_pools[i].NameEnum == nameIntBlock)
+                if (_pools[i].NameEnum != nameIntBlock) continue;
+                
+                if (!_pools[i].TryGetObjFromPool(out var obj))
                 {
-                    if (!_pools[i].TryGetObjFromPool(out var obj))
-                    {
-                        obj = _storageView.Create(i);
-                        _pools[i].AddObjToPool(obj);
-                    }
-
-                    var poolable = (PoolObjects.IPoolable)obj;
-                    poolable.SetActive(true);
-                    return obj;
+                    obj = _storageView.Create(i);
+                    _pools[i].AddObjToPool(obj);
                 }
+
+                var poolable = (IPoolable)obj;
+                poolable.SetActive(true);
+                return obj;
             }
 
             throw new NotImplementedException(Error);
@@ -52,7 +51,7 @@ namespace PoolObjects
         {
             for (var i = 0; i < GetLength; i++)
             {
-                var poolable = (PoolObjects.IPoolable)obj;
+                var poolable = (IPoolable)obj;
 
                 if (_pools[i].NameEnum == poolable.GetIntName)
                 {
@@ -71,7 +70,7 @@ namespace PoolObjects
         {
             for (var k = 0; k < GetLength; k++)
             {
-                var poolable = (PoolObjects.IPoolable)_storageView.GetPrefab(k);
+                var poolable = (IPoolable)_storageView.GetPrefab(k);
 
                 _pools[k] = new Pool<T>(poolable.GetIntName, _poolConfig.StartCountInPool);
 

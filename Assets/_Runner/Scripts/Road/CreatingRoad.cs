@@ -9,7 +9,7 @@ namespace Road
     public class CreatingRoad : IInitializable, IDisposable
     {
         public event Action<BlockView> Created;
-        public event Action<EnumNameBlock> Returned;
+        public event Action Returned;
 
         private readonly RoadView _roadView;
         private readonly StorageBlocks _storage;
@@ -20,8 +20,6 @@ namespace Road
         private bool _isCanRotate;
         private int _currentIndexBlock;
         private float _pointDeletion;
-        private bool _isNeedCreate = true;
-        private bool _isFinalBlockCreated;
 
         public CreatingRoad(RoadView roadView,
                             StorageBlocks storage,
@@ -58,9 +56,6 @@ namespace Road
         public void SetIsCanRotate(bool value)
             => _isCanRotate = value;
 
-        public void StopCreate()
-            => _isNeedCreate = false;
-
         private void ReplaceBlock()
         {
             var currentBlock = _blocks[_currentIndexBlock];
@@ -69,33 +64,10 @@ namespace Road
                 return;
 
             _storage.ReturnObj(currentBlock);
-            Returned?.Invoke(currentBlock.GetNameBlock);
+            Returned?.Invoke();
 
-            if (_isNeedCreate)
-            {
-                var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
-                CreateBlock(_currentIndexBlock, lastIndex);
-            }
-            else if (!_isFinalBlockCreated)
-            {
-                _isFinalBlockCreated = true;
-
-                var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
-
-                SetLocation(lastIndex, _roadView.FinalBlock);
-                _roadView.FinalBlock.gameObject.SetActive(true);
-            }
-            else
-            {
-                _blocks[_currentIndexBlock] = null;
-
-                var nextIndex = (_currentIndexBlock + 1) % GetLengthArray;
-                if (_blocks[nextIndex] == null)
-                {
-                    Dispose();
-                    return;
-                }
-            }
+            var lastIndex = (GetLengthArray - 1 + _currentIndexBlock) % GetLengthArray;
+            CreateBlock(_currentIndexBlock, lastIndex);
 
             _currentIndexBlock = (_currentIndexBlock + 1) % GetLengthArray;
         }

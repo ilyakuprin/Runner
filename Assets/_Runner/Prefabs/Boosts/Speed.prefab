@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 142788939270280333}
   - component: {fileID: 1373649943112236212}
-  - component: {fileID: 1266685268169207775}
-  - component: {fileID: 3462204283259044039}
   m_Layer: 0
   m_Name: Speed
   m_TagString: Untagged
@@ -48,43 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _object: {fileID: 142788939270280333}
   _nameBoost: 2
---- !u!114 &1266685268169207775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142788939270280332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4d481fa9a1dae242aa16bd226f458ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _loadableSprite:
-    m_AssetGUID: c0fcfe56f22136f44953de98a7b64423
-    m_SubObjectName: Cube
-    m_SubObjectType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    m_EditorAssetChanged: 0
-  _meshFilter: {fileID: 7427513166635917479}
---- !u!114 &3462204283259044039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142788939270280332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c0e18f52df5bd44a307e56e965fa62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _loadableSprite:
-    m_AssetGUID: 0f6a5d2c4b11c4146999bba8a7b6191b
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  _meshRenderer: {fileID: 4681250567556568173}
 --- !u!1 &6627003861357934008
 GameObject:
   m_ObjectHideFlags: 0

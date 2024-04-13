@@ -8,7 +8,6 @@ namespace Installer
     {
         [SerializeField] private GameCanvasView _gameCanvasView;
         [SerializeField] private DefeatCanvasView _defeatCanvasView;
-        [SerializeField] private ObstacleCountingView _obstacleCountingView;
         [SerializeField] private ResultCanvasView _resultCanvasView;
         [SerializeField] private WinCanvasView _winCanvasView;
 
@@ -16,7 +15,6 @@ namespace Installer
         {
             Container.Bind<GameCanvasView>().FromInstance(_gameCanvasView).AsSingle();
             Container.Bind<DefeatCanvasView>().FromInstance(_defeatCanvasView).AsSingle();
-            Container.Bind<ObstacleCountingView>().FromInstance(_obstacleCountingView).AsSingle();
             Container.Bind<ResultCanvasView>().FromInstance(_resultCanvasView).AsSingle();
             Container.Bind<WinCanvasView>().FromInstance(_winCanvasView).AsSingle();
 

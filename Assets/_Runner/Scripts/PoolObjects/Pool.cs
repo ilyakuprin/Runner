@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace PoolObjects
 {
-    public class Pool<T>
+    public class Pool<T> where T : IPoolable
     {
         private readonly List<T> _pool;
 
         public Pool(int nameEnum,
-                    int startPool)
+            int startPool)
         {
             NameEnum = nameEnum;
             _pool = new List<T>(startPool);
@@ -31,12 +31,11 @@ namespace PoolObjects
             {
                 var currentObjInPool = _pool[i];
 
-                if (currentObjInPool != null)
-                {
-                    obj = currentObjInPool;
-                    _pool[i] = default;
-                    return true;
-                }
+                if (currentObjInPool == null) continue;
+                
+                obj = currentObjInPool;
+                _pool[i] = default;
+                return true;
             }
 
             obj = default;
@@ -53,16 +52,15 @@ namespace PoolObjects
         {
             for (var i = 0; i < GetCount; i++)
             {
-                if (_pool[i] == null)
+                if (_pool[i] != null) continue;
+                
+                if (IsNameSame(obj))
                 {
-                    if (IsNameSame(obj))
-                    {
-                        _pool[i] = obj;
-                        return true;
-                    }
-
-                    ReturnError();
+                    _pool[i] = obj;
+                    return true;
                 }
+
+                ReturnError();
             }
 
             return false;

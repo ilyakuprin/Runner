@@ -71,7 +71,7 @@ namespace Boosts
                 }
             }
 
-            throw new Exception("Сумма всех шансов = " + sumChance);
+            throw new Exception("РЎСѓРјРјР° РІСЃРµС… С€Р°РЅСЃРѕРІ = " + sumChance);
         }
 
         private static void SetParent(IPoolable boost, IPoolable block)

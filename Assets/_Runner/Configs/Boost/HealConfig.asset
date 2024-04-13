@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36db5b092861ea94c934ec78692df1a4, type: 3}
   m_Name: HealConfig
   m_EditorClassIdentifier: 
-  <Heal>k__BackingField: 2
+  <Heal>k__BackingField: 1

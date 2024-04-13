@@ -12,8 +12,7 @@ namespace Block
         private readonly ChangingParentRoadRotation _changingParentRoadRotation;
         private readonly RoadConfig _roadConfig;
         private readonly CreatingBoost _creatingBoost;
-
-        private int _counterObstacles;
+        
         private int _counterBlocksAfterRotateBlock;
         private bool _isRotateBlockOnRoad;
 
@@ -43,6 +42,7 @@ namespace Block
             ActivateCanRotate();
 
             var nameBlock = block.GetNameBlock;
+            
             if (nameBlock == EnumNameBlock.Empty)
             {
                 _creatingBoost.Create(block);
@@ -53,13 +53,6 @@ namespace Block
 
                 _changingParentRoadRotation.Change(block);
                 _creatingRoad.SetIsCanRotate(false);
-            }
-            else
-            {
-                _counterObstacles++;
-
-                if (_counterObstacles >= _roadConfig.NumberAllBlocks)
-                    _creatingRoad.StopCreate();
             }
         }
 
