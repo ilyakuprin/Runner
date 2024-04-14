@@ -16,7 +16,9 @@ namespace Inputting
 
             _inputData = new InputData()
             {
-                Jump = Input.GetMouseButtonDown(0)
+                Horizontal = Input.GetAxisRaw("Horizontal"),
+                IsHorizontalDown = Input.GetButtonDown("Horizontal"),
+                Fire = Input.GetMouseButtonDown(0)
             };
 
             Inputted?.Invoke(_inputData);

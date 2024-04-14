@@ -2,6 +2,8 @@ namespace Inputting
 {
     public struct InputData
     {
-        public bool Jump;
+        public float Horizontal;
+        public bool IsHorizontalDown;
+        public bool Fire;
     }
 }

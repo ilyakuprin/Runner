@@ -12,7 +12,7 @@ namespace MainHero
 
         public SpeedCalculation(MainHeroStatConfig heroStatConfig)
         {
-            _speed = heroStatConfig.Speed;
+            _speed = heroStatConfig.StartSpeedRun;
         }
 
         public float GetSpeed()

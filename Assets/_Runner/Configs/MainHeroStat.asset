@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6d16885dd34e14b9e1e93c104ae295, type: 3}
   m_Name: MainHeroStat
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 6
+  <StartSpeedRun>k__BackingField: 6
   <Health>k__BackingField: 3
-  <JumpHeight>k__BackingField: 0.6
-  <GravityScale>k__BackingField: 1.85
   <GradientHealth>k__BackingField:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -45,3 +43,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
+  <OffsetToSide>k__BackingField: 1.1
+  <HorizontalSpeed>k__BackingField: 3

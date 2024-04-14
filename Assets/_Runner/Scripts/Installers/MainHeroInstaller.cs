@@ -21,6 +21,8 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<GettingDamageCalculation>().AsSingle();
             Container.BindInterfacesAndSelfTo<GettingInvulnerability>().AsSingle();
             Container.BindInterfacesAndSelfTo<DeathMainHeroAnim>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MovingLeftRight>().AsSingle();
+            Container.BindInterfacesAndSelfTo<Shooting>().AsSingle();
         }
     }
 }

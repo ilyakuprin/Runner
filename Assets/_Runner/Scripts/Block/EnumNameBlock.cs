@@ -2,7 +2,7 @@ namespace Block
 {
     public enum EnumNameBlock
     {
-        WallCenter,
+        Wall,
         Empty,
         Right,
         Left
