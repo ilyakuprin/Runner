@@ -14,6 +14,7 @@ namespace Installer
 
             Container.BindInterfacesAndSelfTo<CreatingBoost>().AsSingle();
             Container.BindInterfacesAndSelfTo<StorageBoost>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ReturningUntakenBoost>().AsSingle();
         }
     }
 }

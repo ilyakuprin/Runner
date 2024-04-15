@@ -4,6 +4,7 @@ namespace Boosts
     {
         Heal,
         Invulnerability,
-        Speed
+        Speed,
+        Bullet
     }
 }

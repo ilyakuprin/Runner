@@ -1,6 +1,5 @@
-using ScriptableObj;
 using System;
-using UnityEngine;
+using ScriptableObj;
 using Zenject;
 
 namespace PoolObjects
@@ -33,9 +32,11 @@ namespace PoolObjects
             for (var i = 0; i < GetLength; i++)
             {
                 if (_pools[i].NameEnum != nameIntBlock) continue;
-                
+
                 if (!_pools[i].TryGetObjFromPool(out var obj))
+                {
                     obj = _storageView.Create(i);
+                }
 
                 var poolable = (IPoolable)obj;
                 poolable.SetActive(true);

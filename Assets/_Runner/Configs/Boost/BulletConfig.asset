@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f409a72e62c345499995f43ab7e6351, type: 3}
-  m_Name: RoadConfig
+  m_Script: {fileID: 11500000, guid: 73a044fd3fb84c7daae224b9e5a18063, type: 3}
+  m_Name: BulletConfig
   m_EditorClassIdentifier: 
-  <StartCountInPool>k__BackingField: 2
-  <NumberVisibleBlocks>k__BackingField: 8
+  <NumberBullet>k__BackingField: 3

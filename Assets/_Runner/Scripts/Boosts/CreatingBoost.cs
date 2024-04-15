@@ -13,8 +13,8 @@ namespace Boosts
         private readonly StorageBoost _storageBoost;
         private readonly BoostView[] _boostView;
         
-        private int _lastIndex;
-        private int _currentIndex;
+        private int _firstBoostOnRoadIndex;
+        private int _lastBoostOnRoadIndex;
 
         public CreatingBoost(BoostConfig boostConfig,
                              StorageBoost storageBoost,
@@ -31,18 +31,27 @@ namespace Boosts
             if (!IsProbabilityPositive()) return;
 
             var boost = GetRandomBoost();
-            _boostView[_currentIndex] = boost;
-            _currentIndex = GetNextIndex(_currentIndex);
+            _boostView[_lastBoostOnRoadIndex] = boost;
+            _lastBoostOnRoadIndex = GetNextIndex(_lastBoostOnRoadIndex);
 
             SetParent(boost, block);
             SetRotation(boost, block);
             SetPosition(boost, block);
         }
-
-        public void ReturnObj()
+        
+        public bool TryGetFirstBoostOnRoad(out BoostView boostView)
         {
-            _storageBoost.ReturnObj(_boostView[_lastIndex]);
-            _lastIndex = GetNextIndex(_lastIndex);
+            boostView = default;
+            if (_boostView[_firstBoostOnRoadIndex] == null) return false;
+            
+            boostView = _boostView[_firstBoostOnRoadIndex];
+            return true;
+        }
+
+        public void SetNextIndex()
+        {
+            _boostView[_firstBoostOnRoadIndex] = null;
+            _firstBoostOnRoadIndex = GetNextIndex(_firstBoostOnRoadIndex);
         }
 
         private int GetNextIndex(int index)
@@ -71,7 +80,7 @@ namespace Boosts
                 }
             }
 
-            throw new Exception("Сумма всех шансов = " + sumChance);
+            throw new Exception("Sum all chance = " + sumChance);
         }
 
         private static void SetParent(IPoolable boost, IPoolable block)

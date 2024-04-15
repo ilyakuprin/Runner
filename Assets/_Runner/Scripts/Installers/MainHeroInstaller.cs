@@ -1,3 +1,4 @@
+using Boost;
 using MainHero;
 using UnityEngine;
 using Zenject;
@@ -23,6 +24,7 @@ namespace Installer
             Container.BindInterfacesAndSelfTo<DeathMainHeroAnim>().AsSingle();
             Container.BindInterfacesAndSelfTo<MovingLeftRight>().AsSingle();
             Container.BindInterfacesAndSelfTo<Shooting>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GettingBullet>().AsSingle();
         }
     }
 }

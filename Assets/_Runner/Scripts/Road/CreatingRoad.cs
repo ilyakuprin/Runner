@@ -11,6 +11,8 @@ namespace Road
         public event Action<BlockView> Created;
         public event Action Returned;
 
+        private const int NumberEmptyStartBlock = 2;
+
         private readonly RoadView _roadView;
         private readonly StorageBlocks _storage;
         private readonly GettingRandomBlock _gettingRandomBlock;
@@ -45,6 +47,7 @@ namespace Road
             _movingRoad.Moved += ReplaceBlock;
 
             CreateStartingFirstBlock();
+            CreateStartingEmptyBlocks();
             CreateStartingRemainingBlock();
 
             _isCanRotate = true;
@@ -101,9 +104,19 @@ namespace Road
             _blocks[0] = emptyBlock;
         }
 
+        private void CreateStartingEmptyBlocks()
+        {
+            for (var i = 1; i < NumberEmptyStartBlock; i++)
+            {
+                var emptyBlock = _storage.GetObj((int)EnumNameBlock.Empty);
+                SetLocation(i - 1, emptyBlock);
+                _blocks[i] = emptyBlock;
+            }
+        }
+
         private void CreateStartingRemainingBlock()
         {
-            for (var i = 1; i < GetLengthArray; i++)
+            for (var i = NumberEmptyStartBlock; i < GetLengthArray; i++)
                 CreateBlock(i, i - 1);
         }
 

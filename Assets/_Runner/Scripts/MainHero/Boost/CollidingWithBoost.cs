@@ -12,14 +12,11 @@ namespace Collision
         public event Action<string> Collided;
 
         private readonly CollidingMainHero _collidingMainHero;
-        private readonly CreatingBoost _creatingBoost;
         private int _boost;
 
-        public CollidingWithBoost(CollidingMainHero collidingMainHero,
-                                  CreatingBoost creatingBoost)
+        public CollidingWithBoost(CollidingMainHero collidingMainHero)
         {
             _collidingMainHero = collidingMainHero;
-            _creatingBoost = creatingBoost;
         }
 
         public void Initialize()
@@ -39,7 +36,7 @@ namespace Collision
 
             Collided?.Invoke(gameObj.tag);
 
-            _creatingBoost.ReturnObj();
+            gameObj.SetActive(false);
         }
     }
 }
