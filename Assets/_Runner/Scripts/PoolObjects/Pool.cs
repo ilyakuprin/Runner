@@ -8,7 +8,7 @@ namespace PoolObjects
         private readonly List<T> _pool;
 
         public Pool(int nameEnum,
-            int startPool)
+                    int startPool)
         {
             NameEnum = nameEnum;
             _pool = new List<T>(startPool);

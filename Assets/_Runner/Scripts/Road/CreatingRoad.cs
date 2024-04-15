@@ -77,7 +77,7 @@ namespace Road
             var randomBlock = _isCanRotate
                 ? _gettingRandomBlock.GetFromAll()
                 : _gettingRandomBlock.GetWithoutRotate();
-
+            
             SetLocation(lastIndex, randomBlock);
 
             _blocks[currentIndex] = randomBlock;

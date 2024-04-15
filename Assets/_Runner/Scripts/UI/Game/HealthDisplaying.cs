@@ -6,7 +6,7 @@ using Zenject;
 
 namespace UI
 {
-    public class HealthDisplay : IInitializable, IDisposable
+    public class HealthDisplaying : IInitializable, IDisposable
     {
         private const float StartValue = 1f;
 
@@ -14,7 +14,7 @@ namespace UI
         private readonly HealthChanging _healthChanging;
         private readonly Gradient _gradient;
 
-        public HealthDisplay(GameCanvasView gameCanvasView,
+        public HealthDisplaying(GameCanvasView gameCanvasView,
                              HealthChanging healthChanging,
                              MainHeroStatConfig heroStat)
         {

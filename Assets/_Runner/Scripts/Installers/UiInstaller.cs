@@ -14,11 +14,12 @@ namespace Installer
             Container.Bind<GameCanvasView>().FromInstance(_gameCanvasView).AsSingle();
             Container.Bind<DefeatCanvasView>().FromInstance(_defeatCanvasView).AsSingle();
 
-            Container.BindInterfacesAndSelfTo<HealthDisplay>().AsSingle();
+            Container.BindInterfacesAndSelfTo<HealthDisplaying>().AsSingle();
             Container.BindInterfacesAndSelfTo<SettingPause>().AsSingle();
             Container.BindInterfacesAndSelfTo<ShowingDefeatCanvas>().AsSingle();
             Container.BindInterfacesAndSelfTo<Restarting>().AsSingle();
             Container.BindInterfacesAndSelfTo<VignetteDisplaying>().AsSingle();
+            Container.BindInterfacesAndSelfTo<AmmoDisplaying>().AsSingle();
         }
     }
 }

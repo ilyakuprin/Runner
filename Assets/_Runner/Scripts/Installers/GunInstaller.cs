@@ -17,6 +17,8 @@ namespace Installer
 
             Container.BindInterfacesAndSelfTo<CallingVfx>().AsSingle();
             Container.BindInterfacesAndSelfTo<CallingAudio>().AsSingle();
+            Container.BindInterfacesAndSelfTo<DelayBetweenShots>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ChangingNumberAmmo>().AsSingle();
         }
     }
 }
