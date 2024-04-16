@@ -1,4 +1,6 @@
+using System.Linq;
 using Inputting;
+using UnityEngine;
 using Zenject;
 
 namespace Installer
@@ -7,7 +9,16 @@ namespace Installer
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<PlayerInput>().AsSingle();
+            if (SystemInfo.deviceType == DeviceType.Handheld)
+            {
+                Container.Bind(new[] { typeof(PlayerInput) }.Concat(typeof(HandheldInput).GetInterfaces()))
+                    .To<HandheldInput>().AsSingle();
+            }
+            else
+            {
+                Container.Bind(new[] { typeof(PlayerInput) }.Concat(typeof(PcInput).GetInterfaces()))
+                    .To<PcInput>().AsSingle();
+            }
         }
     }
 }

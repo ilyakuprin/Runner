@@ -34,7 +34,7 @@ namespace MainHero
         
         public void Execute(InputData inputData)
         {
-            if (!inputData.IsHorizontalDown) return;
+            if (!inputData.IsHorizontalPressDown) return;
             
             if (inputData.Horizontal > 0 && _currentSegment < Rightmost)
             {
