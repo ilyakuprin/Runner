@@ -54,7 +54,7 @@ namespace MainHero
             _cts.Cancel();
             _cts = new CancellationTokenSource();
 
-            _speedCalculation.SetModificator(_speedConfig.Modificator);
+            _speedCalculation.SetExternalModificator(_speedConfig.Modificator);
             TimerResetSpeed().Forget();
         }
 

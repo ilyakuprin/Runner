@@ -17,3 +17,38 @@ MonoBehaviour:
   <HeartEmpty>k__BackingField: {fileID: 21300000, guid: 29047ce911419d14185f0237cc2241c2, type: 3}
   <OffsetToSide>k__BackingField: 1.1
   <HorizontalSpeed>k__BackingField: 3
+  <GameSpeedCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6932934
+      value: 1.1506913
+      inSlope: 0.6665708
+      outSlope: 0.6665708
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 2
+      inSlope: 6.090987
+      outSlope: 6.090987
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09297897
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <TimeToReachMaxSpeedInSec>k__BackingField: 30
+  <MaxSpeedModificator>k__BackingField: 1.477
