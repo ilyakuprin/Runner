@@ -10,7 +10,7 @@ namespace UI
         private readonly HealthChanging _healthChanging;
 
         public ShowingDefeatCanvas(DefeatCanvasView defeatCanvasView,
-                                         HealthChanging healthChanging)
+                                   HealthChanging healthChanging)
         {
             _defeatCanvasView = defeatCanvasView;
             _healthChanging = healthChanging;

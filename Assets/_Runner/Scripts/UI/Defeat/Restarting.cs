@@ -20,6 +20,6 @@ namespace UI
             => _defeatCanvasView.RestartButton.onClick.RemoveListener(Restart);
 
         private static void Restart()
-            => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            => SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 }

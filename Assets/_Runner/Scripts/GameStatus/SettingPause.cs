@@ -4,7 +4,7 @@ using MainHero;
 using Road;
 using Zenject;
 
-namespace UI
+namespace GameStatus
 {
     public class SettingPause : IInitializable, IDisposable
     {
@@ -22,25 +22,15 @@ namespace UI
         }
 
         public void Initialize()
-        {
-            _healthChanging.Dead += PauseEnabled;
-        }
+            => _healthChanging.Dead += PauseEnabled;
 
         public void Dispose()
-        {
-            _healthChanging.Dead -= PauseEnabled;
-        }
+            => _healthChanging.Dead -= PauseEnabled;
 
         private void PauseEnabled()
         {
             _playerInput.SetPause(true);
             _movingRoad.StopMove();
-        }
-
-        private void PauseDisabled()
-        {
-            _playerInput.SetPause(false);
-            _movingRoad.StartMove();
         }
     }
 }

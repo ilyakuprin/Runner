@@ -1,19 +1,20 @@
-using Block;
 using System;
-using UI;
 using Zenject;
 
 namespace Road
 {
     public class ObstacleCounting : IInitializable, IDisposable
     {
+        public event Action Added;
+        
         private readonly CreatingRoad _creatingRoad;
-        private int _counter;
 
         public ObstacleCounting(CreatingRoad creatingRoad)
         {
             _creatingRoad = creatingRoad;
         }
+        
+        public int Counter { get; private set; }
 
         public void Initialize()
             => _creatingRoad.Returned += Count;
@@ -22,6 +23,9 @@ namespace Road
             => _creatingRoad.Returned -= Count;
 
         private void Count()
-            => _counter++;
+        {
+            Counter++;
+            Added?.Invoke();
+        } 
     }
 }
