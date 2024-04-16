@@ -1,5 +1,6 @@
 using ScriptableObj;
 using System;
+using UI;
 
 namespace MainHero
 {
@@ -13,9 +14,9 @@ namespace MainHero
 
         private int _currentHealth;
 
-        public HealthChanging(MainHeroStatConfig mainHeroStatConfig)
+        public HealthChanging(GameCanvasView gameCanvasView)
         {
-            MaxHealth = mainHeroStatConfig.Health;
+            MaxHealth = gameCanvasView.LengthArrayHearts;
             _currentHealth = MaxHealth;
         }
 

@@ -8,43 +8,39 @@ namespace UI
 {
     public class HealthDisplaying : IInitializable, IDisposable
     {
-        private const float StartValue = 1f;
-
         private readonly GameCanvasView _gameCanvasView;
         private readonly HealthChanging _healthChanging;
-        private readonly Gradient _gradient;
+        private readonly MainHeroStatConfig _mainHeroStatConfig;
 
         public HealthDisplaying(GameCanvasView gameCanvasView,
-                             HealthChanging healthChanging,
-                             MainHeroStatConfig heroStat)
+                                HealthChanging healthChanging,
+                                MainHeroStatConfig mainHeroStatConfig)
         {
             _gameCanvasView = gameCanvasView;
             _healthChanging = healthChanging;
-            _gradient = heroStat.GradientHealth;
+            _mainHeroStatConfig = mainHeroStatConfig;
         }
 
         public void Initialize()
-        {
-            SetHealBar(StartValue);
-
-            _healthChanging.HealthChanged += ChangeHealBar;
-        }
+            => _healthChanging.HealthChanged += ChangeHealBar;
 
         public void Dispose()
-        {
-            _healthChanging.HealthChanged -= ChangeHealBar;
-        }
+            => _healthChanging.HealthChanged -= ChangeHealBar;
 
         private void ChangeHealBar(int currentHealth)
         {
-            var valueCurrentHealth = (float)currentHealth / _healthChanging.MaxHealth;
-            SetHealBar(valueCurrentHealth);
-        }
-
-        private void SetHealBar(float value)
-        {
-            _gameCanvasView.Bar.fillAmount = value;
-            _gameCanvasView.Bar.color = _gradient.Evaluate(value);
+            for (var i = 0; i < _gameCanvasView.LengthArrayHearts; i++)
+            {
+                if (currentHealth > 0)
+                {
+                    _gameCanvasView.GetHeart(i).sprite = _mainHeroStatConfig.HeartCompleted;
+                    currentHealth--;
+                }
+                else
+                {
+                    _gameCanvasView.GetHeart(i).sprite = _mainHeroStatConfig.HeartEmpty;
+                }
+            }
         }
     }
 }
